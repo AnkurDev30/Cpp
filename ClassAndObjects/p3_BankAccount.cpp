@@ -1,32 +1,42 @@
-//!< Create a class BankAccount with:
-//!< 
-//!< account number
-//!< 
-//!< balance
-//!< 
-//!< Member functions:
-//!< 
-//!< deposit()
-//!< 
-//!< withdraw()
-//!< 
-//!< displayBalance()
+
+/*****************************************************************************************
+Create a class BankAccount with:
+
+account number
+
+balance
+
+Member functions:
+
+deposit()
+
+withdraw()
+
+displayBalance()
+*****************************************************************************************/
+
+//!< header files
 #include<iostream>
+
+//!< namespace defination
 namespace nBankAccount
 {
+    //!< class defination
     class cBankAccount
     {
+        //!< data members
         private:
             unsigned int iBankAcc;
             unsigned int iBankBalance;
         public:
+        //!< member function
             void vDeposit();
-
             void vWithdraw();
-
             void vDisplayBalance();
     };
 }
+
+//!< bank deposit function.
 void nBankAccount::cBankAccount::vDeposit()
 {
     unsigned iRupees;
@@ -42,6 +52,7 @@ void nBankAccount::cBankAccount::vDeposit()
     }
 
 }
+//!< bank withdraw function.
 void nBankAccount::cBankAccount::vWithdraw()
 {
     if(iBankBalance!=0)
@@ -59,10 +70,13 @@ void nBankAccount::cBankAccount::vWithdraw()
         }
     }
 }
+//!< display balance function.
 void nBankAccount::cBankAccount::vDisplayBalance()
 {
     std::cout<<"available balance = "<<iBankBalance<<std::endl;
 }
+
+//!< main calling function.
 int main()
 {
     nBankAccount::cBankAccount objBankAcc;
