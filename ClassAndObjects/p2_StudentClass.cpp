@@ -1,4 +1,4 @@
-/*
+/********************************************************************************************** *
 Create a class Student with:
 
 roll number
@@ -14,13 +14,19 @@ readData()
 displayData()
 
 calculateGrade()
-*/
+**********************************************************************************************/
+
+//!< Header Files.
 #include<iostream>
 #include<iomanip>
+
+//!< namespace defination.
 namespace nStudentClass
 {
+    //!< class defination
     class cStudentClass
     {
+        //!< private members
         private:
             int iRollNum;
             std::string strName;
@@ -31,6 +37,7 @@ namespace nStudentClass
             void vCalculateGrade();
     };
 }
+//!< vReadData function. reading rollnumber, student name , and marks 
 void nStudentClass::cStudentClass::vReadData()
 {
     std::cout<<"enter roll number"<<std::endl;
@@ -40,12 +47,14 @@ void nStudentClass::cStudentClass::vReadData()
     std::cout<<"enter marks"<<std::endl;
     std::cin>>fMarks;
 }
+//!< vDisplayData function. display rollnumber student name and marks
 void nStudentClass::cStudentClass::vDisplayData()
 {
     std::cout<<std::setw(10)<<"rollnumber = "<<iRollNum<<std::endl;
     std::cout<<std::setw(13)<<"name = "<<strName<<std::endl;
     std::cout<<std::setw(13)<<"marks = "<<fMarks<<std::endl;
 }
+//!< vCalculateGrade function. grade calculation function
 void nStudentClass::cStudentClass::vCalculateGrade()
 {
     if(fMarks<35)std::cout<<std::setw(14)<<"grade = fail"<<std::endl;
@@ -54,6 +63,7 @@ void nStudentClass::cStudentClass::vCalculateGrade()
     else if(fMarks>65&& fMarks<=75)std::cout<<std::setw(14)<<"grade = B"<<std::endl;
     else if(fMarks>75)std::cout<<std::setw(14)<<"grade = A"<<std::endl;
 }
+//!< main function. where object creation and calling function
 int main()
 {
     nStudentClass::cStudentClass objStu;
