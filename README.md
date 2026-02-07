@@ -33,3 +33,16 @@ Program to handle time data and display formatted output using a class.
 
 p8_SecureData.cpp  
 Program demonstrating encapsulation and data hiding using private data members.
+
+## this_pointer program practice (Folder 2)
+
+Programs demonstrating usage of the this pointer in C++.
+
+Topics covered:
+
+    Basic data members value display by this pointer.
+    Constructor initialization using this
+    Object comparison using this
+    Method chaining using this
+
+
