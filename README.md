@@ -40,16 +40,16 @@ Programs demonstrating usage of the this pointer in C++.
 
 Topics covered:
 
-p1_BasicDisplayUsing_this.cpp
+p1_BasicDisplayUsing_this.cpp 
 Basic data members value display by this pointer.
 
-p2_ConstuctionUsing_this.cpp
+p2_ConstuctionUsing_this.cpp 
 Constructor initialization using this
 
-p3_MethodChaining.cpp
+p3_MethodChaining.cpp 
 Object comparison using this
 
-p4_ObjectComapare.cpp
+p4_ObjectComapare.cpp 
 Method chaining using this
 
 
