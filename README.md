@@ -52,4 +52,119 @@ Object comparison using this
 p4_ObjectComapare.cpp 
 Method chaining using this
 
+## Functions in C++ (OOP Practice)
+
+This folder contains small C++ programs focused on understanding:
+
+Objects as arguments
+
+Returning objects from functions
+
+Class design fundamentals
+
+Basic Object-Oriented Programming concepts
+
+These programs are part of my C++ learning journey while strengthening OOP fundamentals.
+
+Programs List
+1. Add Two Numbers Using Object p1_AddTwoNumbersUsingObject.cpp
+
+A simple class-based program where two numbers are stored in objects and added using a member function that returns an object.
+
+Concepts practiced:
+
+Class creation
+
+Object passing
+
+Returning object
+
+2. Complex Number Addition p2_ComplexNumberAddition.cpp
+
+Implements addition of two complex numbers using objects.
+
+Concepts practiced:
+
+Multiple data members
+
+Object argument
+
+Returning object
+
+3. Student Marks Comparison p3_StudentMarkCompare.cpp
+
+Compares marks of two students and returns the object with higher marks.
+
+Concepts practiced:
+
+Object comparison
+
+Returning object
+
+Encapsulation
+
+4. Rectangle Area Addition p4_AdditionOfAreaOfRactangle.cpp
+
+Calculates area of two rectangles and adds them.
+
+Concepts practiced:
+
+Derived values from class members
+
+Function-based calculation
+
+5. Distance Addition p5_DistanceAddition.cpp
+
+Adds two distances (km, meter) and normalizes meters.
+
+Concepts practiced:
+
+Object normalization logic
+
+Real-world modeling
+
+6. Time Addition p6_TimeAddition.cpp
+
+Adds two time objects (hours and minutes) and converts minutes into hours when needed.
+
+Concepts practiced:
+
+Object arithmetic
+
+Carry-forward logic
+
+7. Employee Salary Comparison p7_EmployeeSalary.cpp
+
+Compares salaries of two employees and returns the employee with higher salary.
+
+Concepts practiced:
+
+Object comparison
+
+Returning object
+
+Class design improvement
+
+8. Box Volume Addition p8_BoxVolume.cpp
+
+Calculates volume of two boxes and adds the volumes.
+
+Concepts practiced:
+
+Derived data calculation
+
+Object interaction
+
+9. Bank Account Transfer Simulation p9_BankAccountTransfer.cpp
+
+Simulates transferring balance from one account object to another.
+
+Concepts practiced:
+
+State modification
+
+Object interaction
+
+Real-world modeling
+
 
