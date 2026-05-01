@@ -118,16 +118,33 @@ void cArrayQuestions::vFindDuplicateElement()
 
     for(int i=0;i<size;i++)//11 11 22 22 44
     {
-        duplicate=array[i];
+      
+        int count=0;
         for(int j=i+1;j<size;j++)
         {
-            if(duplicate == array[j])
+            if(array[i] == array[j])
             {
-                std::cout<<array[j]<<" ";
-
+                count++;
             }
-            
         }
+        if(count>1)
+        {
+            bool boAlreadyPrint=false;
+
+            for(int k=0;k<i;k++)
+            {
+                if(array[i]==array[k])
+                {
+                    boAlreadyPrint=true;
+                    break;
+                }
+            }
+            if(boAlreadyPrint==false)
+            {
+                std::cout<<"duplicate "<<array[i]<<std::endl;
+            }
+        }
+
     }
     std::cout<<std::endl;
 }
