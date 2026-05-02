@@ -8,6 +8,8 @@ Base salary is mandatory
 Bonus should have a default value
 Tax should have a default value
 Allow user to override bonus and tax
+
+/*  //////////////////////////////////////////////////
 🧱 2. Online Shopping Bill
 
 Create a function to calculate total bill.
@@ -18,6 +20,10 @@ Price and quantity required
 Discount should be optional (default value)
 Delivery charge should also be optional
 Final bill = price * quantity - discount + delivery
+
+//////////////////////////////////////////// */
+
+
 🧱 3. User Login System
 
 Create a login function.
@@ -28,6 +34,8 @@ Username required
 Role should have default value ("user")
 Print different messages based on role
 (admin / user / guest)
+
+
 🧱 4. Travel Calculation
 
 Create a function to calculate travel distance.
