@@ -19,7 +19,7 @@ int main()
 }
 void billing_system::BillingSystem::printLine()
 {
-    for(int j=0;j<36;j++)
+    for(int j=0;j<38;j++)
     {
         std::cout<<"-";
     }
@@ -88,7 +88,7 @@ int billing_system::BillingSystem::printOutput(int numberOfItems)
     }
     printLine();
     std::cout<<"|"<<std::left<<std::setw(25)<<"Sub Total"<<"| "<<
-    std::left<<std::setw(11)<<subTotal<<"|"<<std::endl;
+    std::left<<std::setw(10)<<subTotal<<"|"<<std::endl;
     printLine();
     finalTotal+=subTotal;
     if(gstOption == true)
@@ -96,19 +96,19 @@ int billing_system::BillingSystem::printOutput(int numberOfItems)
         gstAmmount = (float)((subTotal*18)/100.0);
 
         std::cout<<"|"<<std::left<<std::setw(25)<<"GST(18%)"<<"| "<<
-        std::left<<std::setw(11)<<gstAmmount<<"|"<<std::endl;
+        std::left<<std::setw(10)<<gstAmmount<<"|"<<std::endl;
         printLine();
         finalTotal+=gstAmmount;
     }
     if(discountOpt == true)
     {
         std::cout<<"|"<<std::left<<std::setw(25)<<"Discount"<<"| "<<
-        std::left<<std::setw(11)<<discount<<"|"<<std::endl;
+        std::left<<std::setw(10)<<discount<<"|"<<std::endl;
         printLine();    
-        finalTotal+=discount;    
+        finalTotal-=discount;    
     }
     std::cout<<"|"<<std::left<<std::setw(25)<<"Final Total"<<"| "<<
-    std::left<<std::setw(11)<<finalTotal<<"|"<<std::endl;
+    std::left<<std::setw(10)<<finalTotal<<"|"<<std::endl;
     printLine();    
 
     return 0;

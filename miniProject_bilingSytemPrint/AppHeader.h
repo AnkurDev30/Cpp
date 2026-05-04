@@ -15,12 +15,14 @@ namespace billing_system
                 float price;
                 int quantity;
             };
-            ms_Input *pms_Input;
+            ms_Input *pms_Input=nullptr;
+ 
         public:
             BillingSystem(int numberOfItem);
             ~BillingSystem()
             {
                 delete[] pms_Input;
+                pms_Input =nullptr;
             }
         int takingInput(int numberOfItems);
         int printOutput(int numberOfItems);
