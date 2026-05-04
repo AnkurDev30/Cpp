@@ -46,6 +46,7 @@ Time is required
 Speed should have default value
 Calculate distance = speed × time
 Allow user to override speed
+
 🧱 5. Bank Withdrawal System
 
 Create a withdrawal function.

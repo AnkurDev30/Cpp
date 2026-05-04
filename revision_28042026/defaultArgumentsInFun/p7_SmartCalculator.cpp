@@ -1,5 +1,5 @@
 /*
-🧱 10. Smart Calculator
+🧱 7. Smart Calculator
 
 Create a function:
 
@@ -24,7 +24,11 @@ int smartCalculator::smartCalculatorFun(int a,int b,std::string operatrion)
     if(operatrion == "Add"||operatrion == "add"||operatrion == "ADD"||operatrion == "+")
     {
         result = a+b;
-    }
+    }lve name conflict using this->
+Return current object (return *this)
+Chain functions using this
+Compare two objects using this
+
     else if(operatrion == "Sub"||operatrion == "sub"||operatrion == "SUB"||operatrion == "-")
     {
         result = a-b;
