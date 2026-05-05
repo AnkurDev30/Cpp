@@ -1,9 +1,11 @@
-//AppMain.c
+//AppMain.cpp
+
 
 #include"AppHeader.h"
 billing_system::BillingSystem::BillingSystem(int numberOfItem)
 {
     pms_Input = new ms_Input[numberOfItem];
+    m_numberOfItems = numberOfItem;
 }
 
 int main()
@@ -13,13 +15,13 @@ int main()
     std::cin>>items;
 
     billing_system::BillingSystem object(items);
-    int a = object.takingInput(items);
-    int b = object.printOutput( items);
+    int a = object.takingInput();
+    int b = object.printOutput( );
     return 0;
 }
 void billing_system::BillingSystem::printLine()
 {
-    for(int j=0;j<38;j++)
+    for(int j=0;j<NUMBER_OF_LINE;j++)
     {
         std::cout<<"-";
     }
@@ -27,8 +29,9 @@ void billing_system::BillingSystem::printLine()
 
     std::cout<<"\n";
 }
-int billing_system::BillingSystem::takingInput(int numberOfItems)
+int billing_system::BillingSystem::takingInput()
 {
+    int numberOfItems = m_numberOfItems;
     for(int i=0;i<numberOfItems;i++)
     {
         std::cout<<"enter name of item"<<std::endl;
@@ -43,16 +46,18 @@ int billing_system::BillingSystem::takingInput(int numberOfItems)
     return 0;
 }
 
-int billing_system::BillingSystem::printOutput(int numberOfItems)
+int billing_system::BillingSystem::printOutput()
 {
+    int numberOfItems = m_numberOfItems;
+
     std::cout<<"display output"<<std::endl;
     int total = 0;
     int subTotal = 0;
     float finalTotal=0;
     float discount=0;
     float gstAmmount = 0;
-    bool gstOption =false;
-    bool discountOpt =false;
+    int gstOption =0;
+    int discountOpt =0;
 
     std::cout<<"Gst option 1 for enable or 0 false"<<std::endl;
     std::cin>>gstOption;

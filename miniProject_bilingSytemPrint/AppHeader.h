@@ -2,6 +2,9 @@
 
 #include<iostream>
 #include<iomanip>
+#include<string>
+
+#define NUMBER_OF_LINE 38
 
 namespace billing_system
 {
@@ -15,7 +18,7 @@ namespace billing_system
                 float price;
                 int quantity;
             };
-            ms_Input *pms_Input=nullptr;
+            ms_Input *pms_Input = nullptr;
  
         public:
             BillingSystem(int numberOfItem);
@@ -24,8 +27,8 @@ namespace billing_system
                 delete[] pms_Input;
                 pms_Input =nullptr;
             }
-        int takingInput(int numberOfItems);
-        int printOutput(int numberOfItems);
+        int takingInput();
+        int printOutput();
         void printLine();
     };
 }
