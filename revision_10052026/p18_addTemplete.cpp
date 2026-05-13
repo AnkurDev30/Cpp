@@ -2,7 +2,7 @@
 🧱 TEMPLATE
 18. Generic Add Function
 Concepts:
-function template
+function template.
 */
 #include<iostream>
 template <typename t>
