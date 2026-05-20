@@ -29,5 +29,16 @@ namespace _namespaceAppMain
     };
 }
 
+extern void _fileHandling(std::vector<_namespaceAppMain::_classAppMain>&tempVec);
 
+extern void _funUpdate
+(
+    std::vector<_namespaceAppMain::_classAppMain>&tempVec,
+    _namespaceAppMain::_classAppMain &tempObj
+);
+
+extern void _funWrite
+(
+    std::vector<_namespaceAppMain::_classAppMain>&tempVec
+);
 #endif
