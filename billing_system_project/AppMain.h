@@ -1,4 +1,4 @@
-
+//AppMain.h 
 #ifndef APPMAIN_H
 #define APPMAIN_H
 #include<iostream>
@@ -11,21 +11,23 @@ namespace _namespaceAppMain
 {
     class _classAppMain
     {
-           public: 
-            std::string _strItem;
-            int     _intquantity;
-            char    _charGstOption;
-            char    _charDiscountOption;
-            int     _intGST;
-            int     _intdiscount;
-            float   _floatItemPrice;
-            float   _floatTotal;
-            int _funReadGST(char );
-            int _funReadDiscount(char );
-     
-            static int count;
-            void _funReadData();
+            public: 
+                std::string _strItem;
+                int     _intquantity;
+                char    _charGstOption;
+                char    _charDiscountOption;
+                int     _intGST;
+                int     _intdiscount;
+                float   _floatItemPrice;
+                float   _floatTotal;
+               // static int count;
+                int     _funReadGST(char );
+                int     _funReadDiscount(char );
+                void    _funReadData();
+                float   _funTotalCalc();
+
     };
 }
-int _namespaceAppMain::_classAppMain::count = 0;
+
+
 #endif
