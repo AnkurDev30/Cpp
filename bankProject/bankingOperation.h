@@ -9,7 +9,8 @@ namespace bankingOperationN
     class bankingOperationC
     {
         private:
-            void dumyPrint();
+            void dumyPrintWithDrawal();
+            void dumyPrintDeposit();
             void printClintDetails(
                 std::vector<accountDetailsN::accountDetailsC>ver,
                 int index
@@ -17,7 +18,7 @@ namespace bankingOperationN
 
         public:
             void withdrawalAmmount();
-            void depositAmmount(int accountNum);
+            void depositAmmount();
             void openingAccount();
             bool validateAcc(
                 std::vector<accountDetailsN::accountDetailsC>ver, 
@@ -28,6 +29,11 @@ namespace bankingOperationN
                 std::vector<accountDetailsN::accountDetailsC>&ver,
                 int index
             );
+            void depositOperaionPerform(
+                std::vector<accountDetailsN::accountDetailsC>&ver,
+                int index
+            );
+            
     };
 }
 #endif

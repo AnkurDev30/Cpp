@@ -120,7 +120,7 @@ void generalOperationN::generalOperationC:: selectOption(int option)
             break;
             case 3:
             {
-                //depositAmmount();
+                openingAccObj.depositAmmount();
             }
             break;
             case 4:
