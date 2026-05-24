@@ -15,14 +15,22 @@ namespace bankingOperationN
                 std::vector<accountDetailsN::accountDetailsC>ver,
                 int index
             );
+            void displayBalanceAcc(std::vector<accountDetailsN::accountDetailsC>ver);
+            void displayBalanceMobile(std::vector<accountDetailsN::accountDetailsC>ver);
 
         public:
             void withdrawalAmmount();
             void depositAmmount();
             void openingAccount();
+            void displayBalance();
             bool validateAcc(
                 std::vector<accountDetailsN::accountDetailsC>ver, 
                 unsigned int acc,
+                int *index
+            );
+            bool validateMbNumber(
+                std::vector<accountDetailsN::accountDetailsC>ver, 
+                long long mb,
                 int *index
             );
             void withdrwalOperaionPerform(

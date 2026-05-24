@@ -169,9 +169,14 @@ bool bankingOperationN::bankingOperationC::validateAcc
     int *index
 )
 {
+    generalOperationN::generalOperationC genObj;
     bool validate =false;
     unsigned int accountNumVer=0;
-    //validate Acc.
+    //validate Acc.    
+    genObj.clearScreen();
+    genObj.welcomeBank();
+   
+  //  std::cout<<"Withdrawal Money \n";
     for(int i=0;i<(int)ver.size();i++)
     {
         accountNumVer = ver[i].getAccountNumber();
@@ -226,4 +231,135 @@ void bankingOperationN::bankingOperationC::withdrwalOperaionPerform(
         ver[index].updateAccount(newBalance);
         std::cout<<"New Balance :- "<<ver[index].getAccountBalance()<<std::endl;
     }
+}
+void bankingOperationN::bankingOperationC::displayBalance()
+{
+    accountDetailsN::accountDetailsC obj;
+    fileHandlingN::fileHandlingC fileObj;
+    generalOperationN::generalOperationC genObj;
+
+    int displayBalanceOpt = 0;
+
+    std::vector<accountDetailsN::accountDetailsC>ver;
+    genObj.clearScreen();
+    genObj.welcomeBank();
+   
+    std::cout<<"Display Balance \n";
+ 
+    bool boStatus = fileObj.readFullData(ver);
+
+    if(boStatus==true)
+    {
+        std::cout<<"Read done\n";
+
+        std::cout<<"Display Balnce\n";
+        std::cout<<"1) As Per Account Number\n";
+        std::cout<<"2) As Per Mobile Number\n";
+        std::cin>>displayBalanceOpt;
+        genObj.cinIgnore();
+        switch(displayBalanceOpt)
+        {
+            case 1:
+                displayBalanceAcc(ver);
+            break;
+            case 2:
+                displayBalanceMobile(ver);
+            break;
+            default:
+            break;
+
+        }
+    }
+}
+void bankingOperationN::bankingOperationC::displayBalanceAcc
+(
+    std::vector<accountDetailsN::accountDetailsC>ver
+)
+{
+    generalOperationN::generalOperationC genObj;
+    int acc = 0;
+    int index=0;
+    int accVer=0;
+    genObj.clearScreen();
+    genObj.welcomeBank();
+    std::cout<<"Enter Account Number For Display Balance\n";
+    std::cin>>acc;
+
+    genObj.cinIgnore();
+
+    bool boAccountValid = validateAcc(ver,acc,&index);
+    if(boAccountValid == true)
+    {
+        for(int i=0;i<(int)ver.size();i++)
+        {
+            accVer = ver[i].getAccountNumber();
+            if(acc == accVer)
+            {
+                genObj.clearScreen();
+                genObj.welcomeBank();
+                std::cout<<"Account Number = "<<accVer<<std::endl;
+                std::cout<<"Current Balance = "<<ver[i].getAccountBalance()<<std::endl;
+                break;
+            }
+        }
+    }
+    std::cout<<"Thank you!"<<std::endl;
+}
+void bankingOperationN::bankingOperationC::displayBalanceMobile(std::vector<accountDetailsN::accountDetailsC>ver)
+{
+
+    generalOperationN::generalOperationC genObj;
+    long long mb    =   0;
+    int index       =   0;
+    long long mbVer    =   0;
+    genObj.clearScreen();
+    genObj.welcomeBank();
+    std::cout<<"Enter Mobile Number For Display Balance\n";
+    std::cin>>mb;
+
+    genObj.cinIgnore();
+
+    bool boAccountValid = validateMbNumber(ver,mb,&index);
+    if(boAccountValid == true)
+    {
+        for(int i=0;i<(int)ver.size();i++)
+        {
+            mbVer = ver[i].getAccountMobileNum();
+            if(mb == mbVer)
+            {
+                genObj.clearScreen();
+                genObj.welcomeBank();
+                std::cout<<"Mobile Number = "<<mbVer<<std::endl;
+                std::cout<<"Current Balance = "<<ver[i].getAccountBalance()<<std::endl;
+                break;
+            }
+        }
+    }
+    std::cout<<"Thank you!"<<std::endl;
+}
+bool bankingOperationN::bankingOperationC::validateMbNumber
+(
+    std::vector<accountDetailsN::accountDetailsC>ver, 
+    long long mb,
+    int *index
+)
+{
+    generalOperationN::generalOperationC genObj;
+    bool validate =false;
+    long long mbNumVer=0;
+    //validate Acc.    genObj.clearScreen();
+    genObj.welcomeBank();
+   
+    for(int i=0;i<(int)ver.size();i++)
+    {
+        mbNumVer = ver[i].getAccountMobileNum();
+        if(mb == mbNumVer)
+        {
+            std::cout<<"Validate Mobile Number Successfully\n";
+            validate=true;
+            *index =i;
+            break;
+        }
+    }
+    return validate;
 }

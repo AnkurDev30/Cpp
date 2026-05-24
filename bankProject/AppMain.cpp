@@ -125,7 +125,7 @@ void generalOperationN::generalOperationC:: selectOption(int option)
             break;
             case 4:
             {
-               // displayBalance();
+                openingAccObj.displayBalance();
             }
             break;
             default:

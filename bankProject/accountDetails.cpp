@@ -13,14 +13,7 @@ void clearScreen()
         system("clear");   // Linux/Ubuntu
     #endif
 }
-/*
-            unsigned int accountNumber;
-            unsigned int accountBalance;
-            unsigned int accountPinCity;
-            long long accountMobileNum;
-            std::string accountName;
-            std::string accountAddress;
-*/
+
 void accountDetailsN::accountDetailsC::setAccountNumber   (unsigned int acc)
 {
     accountNumber = acc;
