@@ -169,12 +169,12 @@ bool bankingOperationN::bankingOperationC::validateAcc
     int *index
 )
 {
-    generalOperationN::generalOperationC genObj;
+    //generalOperationN::generalOperationC genObj;
     bool validate =false;
     unsigned int accountNumVer=0;
     //validate Acc.    
-    genObj.clearScreen();
-    genObj.welcomeBank();
+    //genObj.clearScreen();
+    //genObj.welcomeBank();
    
   //  std::cout<<"Withdrawal Money \n";
     for(int i=0;i<(int)ver.size();i++)

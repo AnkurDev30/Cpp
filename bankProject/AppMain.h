@@ -7,6 +7,7 @@
 #include"accountDetails.h"
 #include"fileHandling.h"
 #include"bankingOperation.h"
+#include"moneyTransfer.h"
 #include <thread>
 #include <chrono>
 #include<iostream>

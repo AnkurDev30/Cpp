@@ -131,6 +131,8 @@ bool fileHandlingN::fileHandlingC::writeFullData
             <<accountMobileNum<<","
             <<std::endl;                   
         } 
+    std::ofstream file1("AccountDetails.csv",std::ios::out);
+
         ret=true; 
     }
     else

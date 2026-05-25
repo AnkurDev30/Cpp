@@ -3,7 +3,11 @@ CXXFLAGS = -Wall -std=c++11
 
 TARGET = app
 
-SRC = AppMain.cpp accountDetails.cpp fileHandling.cpp bankingOperation.cpp
+SRC = AppMain.cpp \
+      accountDetails.cpp \
+      fileHandling.cpp \
+      bankingOperation.cpp \
+      moneyTransfer.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

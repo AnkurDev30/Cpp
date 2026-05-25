@@ -88,6 +88,8 @@ void generalOperationN::generalOperationC::startUpFun()
             std::cout<<"2) Withdrawl Ammount\n";
             std::cout<<"3) Deposit Ammount\t";
             std::cout<<"4) Display Balance\n";
+            std::cout<<"5) Money Transfer\t";
+            std::cout<<"6) Transaction History\n";
             std::cin>>option;
             cinIgnore();
             selectOption(option);
@@ -103,29 +105,39 @@ void generalOperationN::generalOperationC::startUpFun()
 }
 void generalOperationN::generalOperationC:: selectOption(int option)
 {
-    bankingOperationN::bankingOperationC openingAccObj;
-
+    bankingOperationN::bankingOperationC bankObj;
+    moneyTransN::moneyTransC objMoney;
 
         switch(option)
         {
             case 1:
             {
-                openingAccObj.openingAccount();
+                bankObj.openingAccount();
             }
             break;
             case 2:
             {
-                openingAccObj.withdrawalAmmount();
+                bankObj.withdrawalAmmount();
             }
             break;
             case 3:
             {
-                openingAccObj.depositAmmount();
+                bankObj.depositAmmount();
             }
             break;
             case 4:
             {
-                openingAccObj.displayBalance();
+                bankObj.displayBalance();
+            }
+            break;
+            case 5:
+            {   //money transfer.
+                objMoney.moneyTransferFun();
+            }
+            break;
+            case 6:
+            {  //tarnsaction History
+                //bankObj.displayBalance();
             }
             break;
             default:
