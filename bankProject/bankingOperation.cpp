@@ -41,19 +41,20 @@ void bankingOperationN::bankingOperationC::depositAmmount()
     std::cout<<"Deposit Money \n";
 
     bool boStatus = fileObj.readFullData(ver);
-    if(boStatus==true)
+    if(boStatus!=true)
     {
-        std::cout<<"Read done\n";
+        std::cout<<"Read Not Successfull\n";
+        return;
     }
     fileObj.clearData();
 
     //check data.
-    for(int i=0;i<(int)ver.size();i++)
-    {
-        std::cout<<ver[i].getAccountNumber()<<std::endl;
-    }
+    //for(int i=0;i<(int)ver.size();i++)
+    //{
+    //    std::cout<<ver[i].getAccountNumber()<<std::endl;
+    //}
     
-    std::cout<<"Account Number For Deposit Money\n  ";
+    std::cout<<"Account Number For Deposit Money\n";
     std::cin>>accountNum;
     genObj.cinIgnore();
 
@@ -88,19 +89,20 @@ void bankingOperationN::bankingOperationC::withdrawalAmmount()
     std::cout<<"Withdrawal Money \n";
 
     bool boStatus = fileObj.readFullData(ver);
-    if(boStatus==true)
+    if(boStatus!=true)
     {
-        std::cout<<"Read done\n";
+        std::cout<<"Read Not Successfully\n";
+        return;
     }
     fileObj.clearData();
 
     //check data.
-    for(int i=0;i<(int)ver.size();i++)
-    {
-        std::cout<<ver[i].getAccountNumber()<<std::endl;
-    }
+    //for(int i=0;i<(int)ver.size();i++)
+    //{
+    //    std::cout<<ver[i].getAccountNumber()<<std::endl;
+   // }
     
-    std::cout<<"Account Number For Withdrawal Money\n  ";
+    std::cout<<"Account Number For Withdrawal Money\n";
     std::cin>>accountNum;
     genObj.cinIgnore();
 
@@ -169,20 +171,15 @@ bool bankingOperationN::bankingOperationC::validateAcc
     int *index
 )
 {
-    //generalOperationN::generalOperationC genObj;
     bool validate =false;
     unsigned int accountNumVer=0;
-    //validate Acc.    
-    //genObj.clearScreen();
-    //genObj.welcomeBank();
-   
-  //  std::cout<<"Withdrawal Money \n";
+
     for(int i=0;i<(int)ver.size();i++)
     {
         accountNumVer = ver[i].getAccountNumber();
         if(acc==accountNumVer)
         {
-            std::cout<<"Validate Account Successfully\n";
+            //std::cout<<"Validate Account Successfully\n";
             validate=true;
             *index =i;
             break;
@@ -250,7 +247,7 @@ void bankingOperationN::bankingOperationC::displayBalance()
 
     if(boStatus==true)
     {
-        std::cout<<"Read done\n";
+        //std::cout<<"Read done\n";
 
         std::cout<<"Display Balnce\n";
         std::cout<<"1) As Per Account Number\n";
@@ -307,7 +304,6 @@ void bankingOperationN::bankingOperationC::displayBalanceAcc
 }
 void bankingOperationN::bankingOperationC::displayBalanceMobile(std::vector<accountDetailsN::accountDetailsC>ver)
 {
-
     generalOperationN::generalOperationC genObj;
     long long mb    =   0;
     int index       =   0;

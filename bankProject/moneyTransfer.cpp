@@ -24,21 +24,12 @@ void moneyTransN::moneyTransC::moneyTransferFun()
     std::cin>>accountNumberS;
     genObj.cinIgnore();
     bool boStatus = fileObj.readFullData(accVect);
-    if(boStatus == true)
-    {
-        std::cout<<"Read done\n";
-    }
-    else
+    if(boStatus != true)
     {
         std::cout<<"Read Fail\n";
         return;
     }
     
-    //debug.
-    for(int i=0;i<(int)accVect.size();i++)
-    {
-        std::cout<<accVect[i].getAccountNumber()<<std::endl;
-    }
     bool accValid = bankObj.validateAcc( accVect, accountNumberS,&index1);
     bool moneyValid =false;
     if(accValid == true)
@@ -49,15 +40,15 @@ void moneyTransN::moneyTransC::moneyTransferFun()
 
         accValid = bankObj.validateAcc( accVect, accountNumberR,&index2);
 
-        std::cout<<index1<<std::endl;
-        std::cout<<index2<<std::endl;
+        //std::cout<<index1<<std::endl;
+        //std::cout<<index2<<std::endl;
 
         if(accValid == true)
         {
             std::cout<<"Enter Transfer Money : "<<std::endl;
             std::cin>>ammount;
             genObj.cinIgnore();
-            
+
             moneyValid = moneyValidFun(accVect,ammount,index1);
             if(moneyValid == true)
             {
@@ -68,13 +59,6 @@ void moneyTransN::moneyTransC::moneyTransferFun()
                 balanceR = accVect[index2].getAccountBalance();   
                 balanceR = balanceR+ammount;  
                 accVect[index2].updateAccount(balanceR);  
-
-                std::cout<<"after\n";
-                for(int i=0;i<(int)accVect.size();i++)
-                {
-                    std::cout<<accVect[i].getAccountNumber()<<std::endl;
-                }
-
 
                 fileObj.clearData();
 

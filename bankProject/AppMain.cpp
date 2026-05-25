@@ -32,7 +32,6 @@ void generalOperationN::generalOperationC::delay(int sec)
 
 int main()
 {
-
     generalOperationN::generalOperationC mainObj;
     mainObj.startUpFun();
     return 0;
@@ -96,7 +95,8 @@ void generalOperationN::generalOperationC::startUpFun()
             std::cout<<"For Exit Press y\n";
             std::cin>>exitChar;
         }while(exitChar!='y'&& exitChar!='Y');
-
+        objGen.clearScreen();
+        std::cout<<"Thank You For Using "<<BANKNAME<<std::endl;
     }
     else
     {

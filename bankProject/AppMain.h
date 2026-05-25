@@ -21,6 +21,7 @@
 #define LOGINID "ASDF1234"
 #define PASSKEY 1234
 #define WELCOME_MSG "------Welcome to State Bank Of India------"
+#define BANKNAME "State Bank Of India"
 
 //general operation class
 namespace generalOperationN
