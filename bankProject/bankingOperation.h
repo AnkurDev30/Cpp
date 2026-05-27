@@ -33,11 +33,11 @@ namespace bankingOperationN
                 long long mb,
                 int *index
             );
-            void withdrwalOperaionPerform(
+            int withdrwalOperaionPerform(
                 std::vector<accountDetailsN::accountDetailsC>&ver,
                 int index
             );
-            void depositOperaionPerform(
+            int depositOperaionPerform(
                 std::vector<accountDetailsN::accountDetailsC>&ver,
                 int index
             );

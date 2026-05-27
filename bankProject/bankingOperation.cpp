@@ -2,7 +2,8 @@
 
 #include"AppMain.h"
 #include"bankingOperation.h"
-
+#include "transactionHistory.h"
+#include <ctime>
 void bankingOperationN::bankingOperationC::openingAccount()
 {
     generalOperationN::generalOperationC genObj;
@@ -31,10 +32,13 @@ void bankingOperationN::bankingOperationC::depositAmmount()
     accountDetailsN::accountDetailsC obj;
     fileHandlingN::fileHandlingC fileObj;
     generalOperationN::generalOperationC genObj;
+    transHistN::transHistC trxnObj;
     unsigned int accountNum=0;
-    //unsigned int money;
+    std::vector<transHistN::transHistC>vecTxn;
     int index;
     std::vector<accountDetailsN::accountDetailsC>ver;
+    std::time_t now = std::time(0);
+
     genObj.clearScreen();
     genObj.welcomeBank();
 
@@ -46,14 +50,8 @@ void bankingOperationN::bankingOperationC::depositAmmount()
         std::cout<<"Read Not Successfull\n";
         return;
     }
-    fileObj.clearData();
-
-    //check data.
-    //for(int i=0;i<(int)ver.size();i++)
-    //{
-    //    std::cout<<ver[i].getAccountNumber()<<std::endl;
-    //}
-    
+   
+ 
     std::cout<<"Account Number For Deposit Money\n";
     std::cin>>accountNum;
     genObj.cinIgnore();
@@ -64,7 +62,24 @@ void bankingOperationN::bankingOperationC::depositAmmount()
     {
         dumyPrintDeposit();
         printClintDetails(ver,index);
-        depositOperaionPerform(ver,index);
+
+        //time collect.
+        std::string dt = std::ctime(&now);
+
+        trxnObj.creditDebitVar = 'C';
+        trxnObj.timeDate = dt;
+        trxnObj.accoutNum = accountNum;
+        trxnObj.ammount = depositOperaionPerform(ver,index);
+
+        vecTxn.push_back(trxnObj);
+        bool retTxn = trxnObj.writeTxnHistory(vecTxn);
+        if(retTxn == true)
+        {
+            std::cout<<"Data Saved!"<<std::endl;
+            genObj.delay(2);
+        }
+//
+        fileObj.clearData();
         bool ret = fileObj.writeFullData(ver);
         if(ret==true)
         {
@@ -79,6 +94,10 @@ void bankingOperationN::bankingOperationC::withdrawalAmmount()
     fileHandlingN::fileHandlingC fileObj;
     generalOperationN::generalOperationC genObj;
     unsigned int accountNum=0;
+    transHistN::transHistC trxnObj;
+    std::vector<transHistN::transHistC>vecTxn;
+    std::time_t now = std::time(0);
+
     //unsigned int money;
     int index;
     std::vector<accountDetailsN::accountDetailsC>ver;
@@ -94,13 +113,7 @@ void bankingOperationN::bankingOperationC::withdrawalAmmount()
         std::cout<<"Read Not Successfully\n";
         return;
     }
-    fileObj.clearData();
-
-    //check data.
-    //for(int i=0;i<(int)ver.size();i++)
-    //{
-    //    std::cout<<ver[i].getAccountNumber()<<std::endl;
-   // }
+    
     
     std::cout<<"Account Number For Withdrawal Money\n";
     std::cin>>accountNum;
@@ -112,7 +125,22 @@ void bankingOperationN::bankingOperationC::withdrawalAmmount()
     {
         dumyPrintWithDrawal();
         printClintDetails(ver,index);
-        withdrwalOperaionPerform(ver,index);
+        //time collect.
+        std::string dt = std::ctime(&now);
+
+        trxnObj.creditDebitVar = 'D';
+        trxnObj.timeDate = dt;
+        trxnObj.accoutNum = accountNum;
+        trxnObj.ammount = withdrwalOperaionPerform(ver,index);
+
+        vecTxn.push_back(trxnObj);
+        bool retTxn = trxnObj.writeTxnHistory(vecTxn);
+        if(retTxn == true)
+        {
+            std::cout<<"Data Saved!"<<std::endl;
+            genObj.delay(2);
+        }
+        fileObj.clearData();
         bool ret = fileObj.writeFullData(ver);
         if(ret==true)
         {
@@ -189,7 +217,7 @@ bool bankingOperationN::bankingOperationC::validateAcc
 }
 
 
-void bankingOperationN::bankingOperationC::depositOperaionPerform(
+int bankingOperationN::bankingOperationC::depositOperaionPerform(
     std::vector<accountDetailsN::accountDetailsC>&ver,
     int index
 )
@@ -204,10 +232,10 @@ void bankingOperationN::bankingOperationC::depositOperaionPerform(
     int newBalance = balance+money;
     ver[index].updateAccount(newBalance);
     std::cout<<"New Balance :- "<<ver[index].getAccountBalance()<<std::endl;
-    
+    return money;
 }
 
-void bankingOperationN::bankingOperationC::withdrwalOperaionPerform(
+int bankingOperationN::bankingOperationC::withdrwalOperaionPerform(
     std::vector<accountDetailsN::accountDetailsC>&ver,
     int index
 )
@@ -228,6 +256,7 @@ void bankingOperationN::bankingOperationC::withdrwalOperaionPerform(
         ver[index].updateAccount(newBalance);
         std::cout<<"New Balance :- "<<ver[index].getAccountBalance()<<std::endl;
     }
+    return money;
 }
 void bankingOperationN::bankingOperationC::displayBalance()
 {
@@ -241,7 +270,7 @@ void bankingOperationN::bankingOperationC::displayBalance()
     genObj.clearScreen();
     genObj.welcomeBank();
    
-    std::cout<<"Display Balance \n";
+   // std::cout<<"Display Balance \n";
  
     bool boStatus = fileObj.readFullData(ver);
 
@@ -300,7 +329,7 @@ void bankingOperationN::bankingOperationC::displayBalanceAcc
             }
         }
     }
-    std::cout<<"Thank you!"<<std::endl;
+    //std::cout<<"Thank you!"<<std::endl;
 }
 void bankingOperationN::bankingOperationC::displayBalanceMobile(std::vector<accountDetailsN::accountDetailsC>ver)
 {
@@ -331,7 +360,7 @@ void bankingOperationN::bankingOperationC::displayBalanceMobile(std::vector<acco
             }
         }
     }
-    std::cout<<"Thank you!"<<std::endl;
+    //std::cout<<"Thank you!"<<std::endl;
 }
 bool bankingOperationN::bankingOperationC::validateMbNumber
 (

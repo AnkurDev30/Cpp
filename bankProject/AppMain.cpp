@@ -77,11 +77,10 @@ void generalOperationN::generalOperationC::startUpFun()
         objGen.delay(5);
         std::cout<<"Login Successfull...\n";
         objGen.delay(2);
-        objGen.clearScreen();
-        objGen.welcomeBank();
-
         do
         {
+            objGen.clearScreen();
+            objGen.welcomeBank();
             std::cout<<"Select The Option\n";
             std::cout<<"1) Opening New Account\t";
             std::cout<<"2) Withdrawl Ammount\n";
@@ -107,7 +106,7 @@ void generalOperationN::generalOperationC:: selectOption(int option)
 {
     bankingOperationN::bankingOperationC bankObj;
     moneyTransN::moneyTransC objMoney;
-
+    transHistN::transHistC txnOb;
         switch(option)
         {
             case 1:
@@ -137,7 +136,7 @@ void generalOperationN::generalOperationC:: selectOption(int option)
             break;
             case 6:
             {  //tarnsaction History
-                //bankObj.displayBalance();
+                txnOb.transactionHistory();
             }
             break;
             default:

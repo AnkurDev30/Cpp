@@ -1,12 +1,21 @@
 //moneyTransfer.cpp
 #include"moneyTransfer.h"
 #include"AppMain.h"
+#include <ctime>
 void moneyTransN::moneyTransC::moneyTransferFun()
 {
     generalOperationN::generalOperationC genObj;
     fileHandlingN::fileHandlingC fileObj;
     bankingOperationN::bankingOperationC bankObj;
     std::vector<accountDetailsN::accountDetailsC> accVect;
+
+    transHistN::transHistC txnObjCre;
+    std::vector<transHistN::transHistC>vecTxnCre;
+
+    transHistN::transHistC txnObjDeb;
+    std::vector<transHistN::transHistC>vecTxnDeb;   
+
+    std::time_t now = std::time(0);
 
     genObj.clearScreen();
     genObj.welcomeBank();
@@ -56,10 +65,30 @@ void moneyTransN::moneyTransC::moneyTransferFun()
                 balanceS = balanceS-ammount;
                 accVect[index1].updateAccount(balanceS);
 
+                /*handling taransaction history*/
+                std::string dt = std::ctime(&now);
+                txnObjDeb.creditDebitVar  ='D';
+                txnObjDeb.timeDate        = dt;
+                txnObjDeb.accoutNum       = accountNumberS;
+                txnObjDeb.ammount         = ammount;
+                vecTxnDeb.push_back(txnObjDeb);
+                bool writeTxnFileDeb = txnObjDeb.writeTxnHistory(vecTxnDeb);
+                if(writeTxnFileDeb==false)std::cout<<"Data Not Saved!\n";
+                /******************************* */
                 balanceR = accVect[index2].getAccountBalance();   
                 balanceR = balanceR+ammount;  
                 accVect[index2].updateAccount(balanceR);  
 
+                /*handling taransaction history*/
+                std::string dt1 = std::ctime(&now);
+                txnObjCre.creditDebitVar  ='C';
+                txnObjCre.timeDate        = dt1;
+                txnObjCre.accoutNum       = accountNumberR;
+                txnObjCre.ammount         = ammount;
+                vecTxnCre.push_back(txnObjCre);
+                bool writeTxnFileCre = txnObjCre.writeTxnHistory(vecTxnCre);
+                if(writeTxnFileCre==false)std::cout<<"Data Not Saved!\n";
+                /******************************* */
                 fileObj.clearData();
 
                 boStatus = fileObj.writeFullData(accVect);

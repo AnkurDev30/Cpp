@@ -7,7 +7,8 @@ SRC = AppMain.cpp \
       accountDetails.cpp \
       fileHandling.cpp \
       bankingOperation.cpp \
-      moneyTransfer.cpp
+      moneyTransfer.cpp \
+      transactionHistory.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
