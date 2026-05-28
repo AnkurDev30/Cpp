@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -Wall -std=c++14 -Iinclude
 
-TARGET = app
+TARGET = source/app
 
 SRC = source/AppMain.cpp \
       source/generalOperation.cpp \
@@ -17,7 +17,7 @@ $(TARGET): $(OBJ)
 	$(CXX) $(OBJ) -o $(TARGET)
 
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $<
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ) $(TARGET)
