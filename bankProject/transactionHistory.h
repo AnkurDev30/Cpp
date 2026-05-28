@@ -6,10 +6,11 @@
 #include<fstream>
 #include<string>
 #include<vector>
+#include"bankingOperation.h"
 
     namespace transHistN
     {
-        class transHistC
+        class transHistC:public bankingOperationN::bankingOperationC
         {
             public:
                

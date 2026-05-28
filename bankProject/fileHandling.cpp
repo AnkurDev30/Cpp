@@ -1,6 +1,7 @@
 //fileHandling.cpp
 #include"fileHandling.h"
 #include <sstream>
+#include"accountDetails.h"
 bool fileHandlingN::fileHandlingC:: writeDataInExcel
 (
     accountDetailsN::accountDetailsC &Obj
@@ -65,10 +66,15 @@ bool fileHandlingN::fileHandlingC::readFullData
             getline(ss,accountPinCity  ,',');
             getline(ss,accountMobileNum,',');
 
-            unsigned int tempAccountNumber       = std::stoi(accountNumber);
-            unsigned int tempAccountBalance      = std::stoi(accountBalance);
-            unsigned int tempAccountPinCity      = std::stoi(accountPinCity);
-            long long    tempAccountMobileNum    = std::stoll(accountMobileNum);
+            unsigned int tempAccountNumber       = 0;
+            unsigned int tempAccountBalance      = 0;
+            unsigned int tempAccountPinCity      = 0;
+            long long    tempAccountMobileNum    = 0;
+
+            std::stringstream(accountNumber) >> tempAccountNumber;
+            std::stringstream(accountBalance) >> tempAccountBalance;
+            std::stringstream(accountPinCity) >> tempAccountPinCity;
+            std::stringstream(accountMobileNum) >> tempAccountMobileNum;
 
             obj.setAccountNumber   (tempAccountNumber);
             obj.setAccountBalance  (tempAccountBalance);

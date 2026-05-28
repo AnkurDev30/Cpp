@@ -19,6 +19,7 @@ namespace bankingOperationN
             void displayBalanceMobile(std::vector<accountDetailsN::accountDetailsC>ver);
 
         public:
+            int enterMoney(int flag);
             void withdrawalAmmount();
             void depositAmmount();
             void openingAccount();
@@ -33,6 +34,8 @@ namespace bankingOperationN
                 long long mb,
                 int *index
             );
+            
+            bool validateAccNumAsPerAcc(unsigned int accountNumber);
             int withdrwalOperaionPerform(
                 std::vector<accountDetailsN::accountDetailsC>&ver,
                 int index

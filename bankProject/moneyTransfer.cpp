@@ -1,6 +1,7 @@
 //moneyTransfer.cpp
 #include"moneyTransfer.h"
-#include"AppMain.h"
+//#include"AppMain.h"
+#include"generalOperation.h"
 #include <ctime>
 void moneyTransN::moneyTransC::moneyTransferFun()
 {
@@ -29,9 +30,9 @@ void moneyTransN::moneyTransC::moneyTransferFun()
     int index2;
     int balanceR;
     int balanceS;
-    std::cout<<"Enter Sender Account Number : "<<std::endl;
-    std::cin>>accountNumberS;
-    genObj.cinIgnore();
+
+    accountNumberS = genObj.intIput("Enter Sender Account Number : ");
+
     bool boStatus = fileObj.readFullData(accVect);
     if(boStatus != true)
     {
@@ -43,20 +44,14 @@ void moneyTransN::moneyTransC::moneyTransferFun()
     bool moneyValid =false;
     if(accValid == true)
     {
-        std::cout<<"Enter Receiver Account Number : "<<std::endl;
-        std::cin>>accountNumberR;
-        genObj.cinIgnore();
+        accountNumberR = genObj.intIput("Enter Receiver Account Number : ");
 
         accValid = bankObj.validateAcc( accVect, accountNumberR,&index2);
 
-        //std::cout<<index1<<std::endl;
-        //std::cout<<index2<<std::endl;
-
         if(accValid == true)
         {
-            std::cout<<"Enter Transfer Money : "<<std::endl;
-            std::cin>>ammount;
-            genObj.cinIgnore();
+
+            ammount = bankObj.enterMoney(2);
 
             moneyValid = moneyValidFun(accVect,ammount,index1);
             if(moneyValid == true)

@@ -1,6 +1,6 @@
 //accountDetails.cpp
 #include"accountDetails.h"
-
+#include"generalOperation.h"
 void cinIgnore()
 {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -139,7 +139,7 @@ int accountDetailsN::accountDetailsC::generateAccountNumber()
 void accountDetailsN::accountDetailsC::setData()
 {
     bool nameCheckBool=false;
-
+    generalOperationN::generalOperationC genObj;
     //name 
     do
     {
@@ -161,9 +161,7 @@ void accountDetailsN::accountDetailsC::setData()
     //pin code
     do
     {
-        std::cout<<"Enter Pin Code : \n";
-        std::cin>>accountPinCity;
-        cinIgnore();
+        accountPinCity = genObj.intIput("Enter Pin Code :");
         if(accountPinCity<100000)
         {
             std::cout<<"Pin Code Shoild Be 6 Digit \n";
@@ -173,9 +171,7 @@ void accountDetailsN::accountDetailsC::setData()
     //mobile
     do
     {
-        std::cout<<"Enter Mobile Number : \n";
-        std::cin>>accountMobileNum;
-        cinIgnore();
+        accountMobileNum = genObj.longIput("Enter Mobile Number :");
         if(accountMobileNum<=999999999)
         {
             std::cout<<"Mobile Numbner Shoild Be 10 Digit \n";
@@ -188,9 +184,7 @@ void accountDetailsN::accountDetailsC::setData()
     //enter balance
     do
     {
-        std::cout<<"Enter Account Opening Balance : \n";
-        std::cin>>accountBalance;
-        cinIgnore();
+        accountBalance = genObj.intIput("Enter Account Opening Balance :");
         if(accountBalance<1000)
         {
             std::cout<<"Please Use Minimum Ammount 1000/- Rs\n";

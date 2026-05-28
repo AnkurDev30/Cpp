@@ -1,9 +1,10 @@
 CXX = g++
-CXXFLAGS = -Wall -std=c++11
+CXXFLAGS = -Wall -std=c++14
 
 TARGET = app
 
 SRC = AppMain.cpp \
+      generalOperation.cpp \
       accountDetails.cpp \
       fileHandling.cpp \
       bankingOperation.cpp \

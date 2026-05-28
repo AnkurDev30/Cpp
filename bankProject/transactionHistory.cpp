@@ -1,7 +1,8 @@
 //transactionHistory.cpp
 #include"transactionHistory.h"
 #include <sstream>
-#include"AppMain.h"
+//#include"AppMain.h"
+#include"generalOperation.h"
 #include<iomanip>
 bool transHistN::transHistC::writeTxnHistory(std::vector<transHistN::transHistC> &wrTxnVec)
 {
@@ -32,7 +33,8 @@ bool transHistN::transHistC::readTxnHistory(std::vector<transHistN::transHistC> 
     transHistN::transHistC obj;
     std::string line;
     bool ret=false;
-
+    int acn;
+    int acMoney;
     if(file1.is_open()==true)
     {
         while(getline(file1,line))
@@ -51,8 +53,12 @@ bool transHistN::transHistC::readTxnHistory(std::vector<transHistN::transHistC> 
      
             obj.creditDebitVar = creDebVar[0];
             obj.timeDate = timeDate;
-            obj.accoutNum = std::stoi(accNumber);
-            obj.ammount = std::stoi(accMoney);
+
+            std::stringstream(accNumber) >> acn;
+            std::stringstream(accMoney) >> acMoney;
+
+            obj.accoutNum = acn;
+            obj.ammount = acMoney;
             
             ret=true;
 
@@ -72,13 +78,13 @@ void transHistN::transHistC:: transactionHistory()
     genObj.welcomeBank();
     int printHandl=0;
     int accountNum =0;
+    bool flagCheck = false;
     std::vector<transHistN::transHistC> readVec;
 
-    std::cout<<"Transaction Histor : \n";
+    std::cout<<"Transaction History : \n";
 
-    std::cout<<"Enter Account Number :\n";
-    std::cin>>accountNum;
-
+    accountNum = genObj.intIput("Enter Account Number :");
+ 
     bool readValid = readTxnHistory(readVec);
 
     if(readValid==true)
@@ -94,11 +100,18 @@ void transHistN::transHistC:: transactionHistory()
                     printTranxHistoryHrader(accountNum);
                     printHandl++;
                 }
+                flagCheck =true;
                 std::cout<<"| "<<std::left<<std::setw(14)<<readVec[i].ammount
                 <<"| "<<std::left<<std::setw(14)<<readVec[i].creditDebitVar
                 <<"| "<<std::left<<std::setw(25)<<readVec[i].timeDate<<
                 std::endl;
             }
+        }
+
+        if(flagCheck == false)
+        {
+            std::cout<<"Account Number :"<<accountNum
+            <<" Have Not Any Transaction Hisory\n";
         }
     
         for(int i=0;i<58;i++)

@@ -1,12 +1,19 @@
 //fileHandling.h
 #ifndef fileHandling_h
 #define fileHandling_h
-#include"accountDetails.h"
+
+
+
 #include<iostream>
 #include<fstream>
 #include<iomanip>
 #include<vector>
 
+    namespace accountDetailsN
+    {
+        class accountDetailsC;
+    }
+    
     namespace fileHandlingN
     {
         class fileHandlingC

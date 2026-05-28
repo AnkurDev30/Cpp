@@ -1,6 +1,7 @@
 //bankingOperation.h
 
-#include"AppMain.h"
+//#include"AppMain.h"
+#include"generalOperation.h"
 #include"bankingOperation.h"
 #include "transactionHistory.h"
 #include <ctime>
@@ -51,10 +52,7 @@ void bankingOperationN::bankingOperationC::depositAmmount()
         return;
     }
    
- 
-    std::cout<<"Account Number For Deposit Money\n";
-    std::cin>>accountNum;
-    genObj.cinIgnore();
+    accountNum = genObj.intIput("Account Number For Deposit Money :");
 
     bool boAccountValid = validateAcc(ver,accountNum,&index);
 
@@ -78,13 +76,17 @@ void bankingOperationN::bankingOperationC::depositAmmount()
             std::cout<<"Data Saved!"<<std::endl;
             genObj.delay(2);
         }
-//
+
         fileObj.clearData();
         bool ret = fileObj.writeFullData(ver);
         if(ret==true)
         {
             std::cout<<"Write Data Successfully\n";
         }
+    }
+    else
+    {
+        std::cout<<"Account Number Not Found\n";
     }
 }
 void bankingOperationN::bankingOperationC::withdrawalAmmount()
@@ -114,10 +116,7 @@ void bankingOperationN::bankingOperationC::withdrawalAmmount()
         return;
     }
     
-    
-    std::cout<<"Account Number For Withdrawal Money\n";
-    std::cin>>accountNum;
-    genObj.cinIgnore();
+    accountNum = genObj.intIput("Account Number For Withdrawal Money : ");
 
     bool boAccountValid = validateAcc(ver,accountNum,&index);
 
@@ -146,6 +145,10 @@ void bankingOperationN::bankingOperationC::withdrawalAmmount()
         {
             std::cout<<"Write Data Successfully\n";
         }
+    }
+    else
+    {
+        std::cout<<"Account Number Not Found\n";
     }
 }
 void bankingOperationN::bankingOperationC::printClintDetails
@@ -216,7 +219,28 @@ bool bankingOperationN::bankingOperationC::validateAcc
     return validate;
 }
 
+int bankingOperationN::bankingOperationC::enterMoney(int flag)
+{
+    generalOperationN::generalOperationC genObj;
+    int money;
+    do
+    {
+        if(flag==0)//for deposit ammount
+        {
+            money = genObj.intIput("Enter Deposit Money : ");
+        }
+        else if(flag==1)//for deposit ammount
+        {
+            money = genObj.intIput("Enter Withdrawal Money: ");
+        }
+        else if(flag==2)//for deposit ammount
+        {
+            money = genObj.intIput("Enter Transfer Money: ");
+        } 
+    }while(money<0);
 
+    return money;
+}
 int bankingOperationN::bankingOperationC::depositOperaionPerform(
     std::vector<accountDetailsN::accountDetailsC>&ver,
     int index
@@ -225,11 +249,12 @@ int bankingOperationN::bankingOperationC::depositOperaionPerform(
     int money;
     int balance;
     std::cout<<"---------------------------------\n";
-    std::cout<<"Enter Deposit Money\n";
-    std::cin>>money;
+
+    money = enterMoney(0);
+
     balance = ver[index].getAccountBalance();
 
-    int newBalance = balance+money;
+    int newBalance = balance + money;
     ver[index].updateAccount(newBalance);
     std::cout<<"New Balance :- "<<ver[index].getAccountBalance()<<std::endl;
     return money;
@@ -243,16 +268,18 @@ int bankingOperationN::bankingOperationC::withdrwalOperaionPerform(
     int money;
     int balance;
     std::cout<<"---------------------------------\n";
-    std::cout<<"Enter Withdrawal Money\n";
-    std::cin>>money;
+    
+
+    money = enterMoney(1);
     balance = ver[index].getAccountBalance();
+
     if(balance<money)
     {
         std::cout<<"Insufficiant balance\n";
     }
     else
     {
-        int newBalance = balance-money;
+        int newBalance = balance - money;
         ver[index].updateAccount(newBalance);
         std::cout<<"New Balance :- "<<ver[index].getAccountBalance()<<std::endl;
     }
@@ -277,12 +304,11 @@ void bankingOperationN::bankingOperationC::displayBalance()
     if(boStatus==true)
     {
         //std::cout<<"Read done\n";
-
-        std::cout<<"Display Balnce\n";
-        std::cout<<"1) As Per Account Number\n";
-        std::cout<<"2) As Per Mobile Number\n";
-        std::cin>>displayBalanceOpt;
-        genObj.cinIgnore();
+      //  std::cin>>displayBalanceOpt;
+        displayBalanceOpt = genObj.intIput
+                            (
+                                "Display Balnce\n1) As Per Account Number\n2) As Per Mobile Number"
+                            );
         switch(displayBalanceOpt)
         {
             case 1:
@@ -292,6 +318,7 @@ void bankingOperationN::bankingOperationC::displayBalance()
                 displayBalanceMobile(ver);
             break;
             default:
+                std::cout<<"Wrong Option Selected\n";
             break;
 
         }
@@ -308,10 +335,8 @@ void bankingOperationN::bankingOperationC::displayBalanceAcc
     int accVer=0;
     genObj.clearScreen();
     genObj.welcomeBank();
-    std::cout<<"Enter Account Number For Display Balance\n";
-    std::cin>>acc;
 
-    genObj.cinIgnore();
+    acc = genObj.intIput("Enter Account Number For Display Balance : ");
 
     bool boAccountValid = validateAcc(ver,acc,&index);
     if(boAccountValid == true)
@@ -329,7 +354,6 @@ void bankingOperationN::bankingOperationC::displayBalanceAcc
             }
         }
     }
-    //std::cout<<"Thank you!"<<std::endl;
 }
 void bankingOperationN::bankingOperationC::displayBalanceMobile(std::vector<accountDetailsN::accountDetailsC>ver)
 {
@@ -339,10 +363,8 @@ void bankingOperationN::bankingOperationC::displayBalanceMobile(std::vector<acco
     long long mbVer    =   0;
     genObj.clearScreen();
     genObj.welcomeBank();
-    std::cout<<"Enter Mobile Number For Display Balance\n";
-    std::cin>>mb;
-
-    genObj.cinIgnore();
+    
+    mb = genObj.longIput("Enter Mobile Number For Display Balance : ");
 
     bool boAccountValid = validateMbNumber(ver,mb,&index);
     if(boAccountValid == true)
@@ -360,7 +382,6 @@ void bankingOperationN::bankingOperationC::displayBalanceMobile(std::vector<acco
             }
         }
     }
-    //std::cout<<"Thank you!"<<std::endl;
 }
 bool bankingOperationN::bankingOperationC::validateMbNumber
 (
@@ -372,7 +393,7 @@ bool bankingOperationN::bankingOperationC::validateMbNumber
     generalOperationN::generalOperationC genObj;
     bool validate =false;
     long long mbNumVer=0;
-    //validate Acc.    genObj.clearScreen();
+
     genObj.welcomeBank();
    
     for(int i=0;i<(int)ver.size();i++)
@@ -387,4 +408,32 @@ bool bankingOperationN::bankingOperationC::validateMbNumber
         }
     }
     return validate;
+}
+bool bankingOperationN::bankingOperationC::validateAccNumAsPerAcc
+(
+    unsigned int accountNumber
+)
+{
+    bool retVal = false;
+
+    accountDetailsN::accountDetailsC obj;
+    fileHandlingN::fileHandlingC fileObj;
+
+    std::vector<accountDetailsN::accountDetailsC>ver;
+
+    bool boStatus = fileObj.readFullData(ver);
+    unsigned int temAcc;
+    if(boStatus == true)
+    {
+        for(int i=0;i<(int)ver.size();i++)
+        {
+            temAcc = ver[i].getAccountNumber();
+            if(accountNumber == temAcc)
+            {
+                retVal = true;
+                break;
+            }
+        }
+    }
+    return retVal;
 }
