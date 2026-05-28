@@ -1,9 +1,21 @@
-//bankingOperation.h
+// File name : bankingOperation.h
+
+/*****************************************************
+#   File Name   :   bankingOperation.h
+#   Description :   This file define banking operations
+#                   like withdrawal, deposite, opening 
+#                   account and display balance.
+#   Note        :   None.
+*****************************************************/
 #ifndef bankingOperation_H
 #define bankingOperation_H
+
+//!< header files included
 #include"accountDetails.h"
 #include"fileHandling.h"
 
+
+//!< Namespace define
 namespace bankingOperationN
 {
     class bankingOperationC
@@ -47,4 +59,4 @@ namespace bankingOperationN
             
     };
 }
-#endif
+#endif //bankingOperation.h

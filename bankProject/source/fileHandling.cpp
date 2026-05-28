@@ -1,13 +1,27 @@
-//fileHandling.cpp
+/*****************************************************
+#   File Name   :   fileHandling.cpp
+#   Description :   This define Account data details.
+#                   like name, address, account number etc
+#   Note        :   None.
+*****************************************************/
+
+//!< include headers.
 #include"fileHandling.h"
 #include <sstream>
 #include"accountDetails.h"
+
+/*****************************************************
+#   Function Name   :   writeDataInExcel
+#   Description     :   this function write data in AccountDetails.csv
+#                       file.
+#   Note            :   None.
+*****************************************************/
 bool fileHandlingN::fileHandlingC:: writeDataInExcel
 (
     accountDetailsN::accountDetailsC &Obj
 )
 {
- 
+    //!< local variables
     bool checkStatus =false;
     unsigned int accountNumber = Obj.getAccountNumber();
     unsigned int accountBalance= Obj.getAccountBalance();
@@ -16,40 +30,58 @@ bool fileHandlingN::fileHandlingC:: writeDataInExcel
     std::string accountName    = Obj.getAccountName();
     std::string accountAddress = Obj.getAccountAddress(); 
 
+    //!open file in append mode.
     std::ofstream file3("AccountDetails.csv",std::ios::app);
+
+    //!open file in read mode.
     std::ifstream file4("AccountDetails.csv",std::ios::in);
+
+    //!< if file is open 
     if(file3.is_open()==true)
     {
         if(file4.is_open()==true)
         {
             if(file4.peek() == EOF)
             {
+                //!< headers write.
                 file3<<"Balance Sheet"<<std::endl;
                 file3<<"Account Number"<<","<<"Account Balance"<<","<<"Name"<<","<<"Address"<<","<<"Pin Code"<<","<<"Mobile"<<","<<std::endl;
             }
         }
-
+        //!< write data.
         file3<<accountNumber<<","<<accountBalance<<","<<accountName<<","<<accountAddress<<","<<accountPinCity<<","<<accountMobileNum<<","<<std::endl;        
         checkStatus = true;
     }
     return checkStatus;
 }
-
+/*****************************************************
+#   Function Name   :   readFullData
+#   Description     :   this function read full data from
+#                       AccountDetails.csv
+#                       file.
+#   Note            :   None.
+*****************************************************/
 bool fileHandlingN::fileHandlingC::readFullData
 (
     std::vector <accountDetailsN::accountDetailsC> &ver
 )
 {
+    //!< local variables
     bool ret;
-    std::ifstream file1("AccountDetails.csv");
-    std::string line;
     accountDetailsN::accountDetailsC obj;
+
+    //!< read file.
+    std::ifstream file1("AccountDetails.csv");
+    //!< string for read.
+    std::string line;
+
+    //!< if file is open successfully.
     if(file1.is_open()==true)
     {
-        getline(file1, line);//first balnce sheet ignore.
-        getline(file1, line);//header ignore.
+        getline(file1, line);//!< first balnce sheet ignore.
+        getline(file1, line);//!< header ignore.
         while(getline(file1,line))
-        {
+        {//!< read full data.
             std::stringstream ss(line);
 
             std::string accountNumber       ;
@@ -83,6 +115,7 @@ bool fileHandlingN::fileHandlingC::readFullData
             obj.setAccountName     (accountName );
             obj.setAccountAddress  (accountAddress ); 
 
+            //!< update vector.
             ver.push_back(obj);
             ret = true;
         }
@@ -93,12 +126,21 @@ bool fileHandlingN::fileHandlingC::readFullData
     }
     return ret;
 }
-
+/*****************************************************
+#   Function Name   :   clearData
+#   Description     :   make empty the file.
+#   Note            :   None.
+*****************************************************/
 void fileHandlingN::fileHandlingC::clearData()
 {
     std::ofstream file("AccountDetails.csv", std::ios::trunc);
     file.close();
 }
+/*****************************************************
+#   Function Name   :   writeFullData
+#   Description     :   write full vector data function.
+#   Note            :   None.
+*****************************************************/
 bool fileHandlingN::fileHandlingC::writeFullData
 (
     std::vector <accountDetailsN::accountDetailsC> &ver

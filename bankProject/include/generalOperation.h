@@ -1,4 +1,11 @@
-//generalOperation.h
+//File name : generalOperation.h
+
+/*****************************************************
+#   File Name   :   generalOperation.h
+#   Description :   This file define general operation
+#                   which can use in project
+#   Note        :   None.
+*****************************************************/
 #ifndef generalOperation_H
 #define generalOperation_H
 
@@ -14,6 +21,7 @@
 #include <cctype>
 #include <sstream>
 
+//!< header files
 #include"accountDetails.h"
 #include"fileHandling.h"
 #include"bankingOperation.h"
@@ -27,7 +35,7 @@
 #define WELCOME_MSG "------Welcome to State Bank Of India------"
 #define BANKNAME "State Bank Of India"
 
-//general operation class
+//general operation Namespace + class
 namespace generalOperationN
 {
     class generalOperationC

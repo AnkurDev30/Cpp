@@ -1,7 +1,15 @@
-//accountDetails.h
+// File name : accountDetails.h
+
+/*****************************************************
+#   File Name   :   accountDetails.h
+#   Description :   This define Account data details.
+#                   like name, address, account number etc
+#   Note        :   None.
+*****************************************************/
 #ifndef accountDetails_H
 #define accountDetails_H
 
+//Header files.
 #include <iostream>
 #include <string>
 #include <ctime>
@@ -9,7 +17,7 @@
 #include <fstream>
 
 
-
+// Nmaespace Define.
 namespace accountDetailsN
 {
     class accountDetailsC
@@ -45,4 +53,4 @@ namespace accountDetailsN
     };
 }
 
-#endif
+#endif //accountDetails.h

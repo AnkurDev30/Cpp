@@ -1,10 +1,31 @@
 //accountDetails.cpp
+
+/*****************************************************
+#   File Name   :   accountDetails.cpp
+#   Description :   This define Account data details.
+#                   like name, address, account number etc
+#   Note        :   None.
+*****************************************************/
+
+//!< include headers
 #include"accountDetails.h"
 #include"generalOperation.h"
+
+/*****************************************************
+#   Function Name   :   cinIgnore
+#   Description     :   this function handle the buffer
+#                       after cin input.
+#   Note            :   None.
+*****************************************************/
 void cinIgnore()
 {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
+/*****************************************************
+#   Function Name   :   clearScreen
+#   Description     :   this function clear the screen
+#   Note            :   None.
+*****************************************************/
 void clearScreen()
 {
     #ifdef _WIN32
@@ -13,56 +34,125 @@ void clearScreen()
         system("clear");   // Linux/Ubuntu
     #endif
 }
-
+/*****************************************************
+#   Function Name   :   setAccountNumber
+#   Description     :   this function set the accounter number
+#   Note            :   None.
+*****************************************************/
 void accountDetailsN::accountDetailsC::setAccountNumber   (unsigned int acc)
 {
     accountNumber = acc;
 }
+/*****************************************************
+#   Function Name   :   setAccountBalance
+#   Description     :   this function set the accounter balance
+#   Note            :   None.
+*****************************************************/
 void accountDetailsN::accountDetailsC::setAccountBalance  (unsigned int acc)
 {
     accountBalance= acc;
 }
+/*****************************************************
+#   Function Name   :   setAccountPinCity
+#   Description     :   this function set the pin code of user
+#   Note            :   None.
+*****************************************************/
 void accountDetailsN::accountDetailsC::setAccountPinCity  (unsigned int acc)
 {
     accountPinCity = acc;
 }
+/*****************************************************
+#   Function Name   :   setAccountMobileNum
+#   Description     :   this function set the mobile number of user
+#   Note            :   None.
+*****************************************************/
 void accountDetailsN::accountDetailsC::setAccountMobileNum(long long   mb)
 {
     accountMobileNum = mb;
 }
+/*****************************************************
+#   Function Name   :   setAccountName
+#   Description     :   this function set the name of user
+#   Note            :   None.
+*****************************************************/
 void accountDetailsN::accountDetailsC::setAccountName     (std::string name)
 {
     accountName = name;
 }
+/*****************************************************
+#   Function Name   :   setAccountAddress
+#   Description     :   this function set the address of user
+#   Note            :   None.
+*****************************************************/
 void accountDetailsN::accountDetailsC::setAccountAddress  (std::string add)
 {
     accountAddress = add;
 }
-
+/*****************************************************
+#   Function Name   :   getAccountNumber
+#   Description     :   this function provide the Account Number
+#   Note            :   None.
+*****************************************************/
 unsigned int accountDetailsN::accountDetailsC:: getAccountNumber()
 {
     return accountNumber;
 }
+/*****************************************************
+#   Function Name   :   getAccountBalance
+#   Description     :   this function provide the Account Balance
+#   Note            :   None.
+*****************************************************/
 unsigned int accountDetailsN::accountDetailsC::getAccountBalance()
 {
     return accountBalance;
 }
+/*****************************************************
+#   Function Name   :   getAccountPinCity
+#   Description     :   this function provide the Pin Code of user 
+#   Note            :   None.
+*****************************************************/
 unsigned int accountDetailsN::accountDetailsC::getAccountPinCity()
 {
     return accountPinCity;
 }
+/*****************************************************
+#   Function Name   :   getAccountMobileNum
+#   Description     :   this function provide the Mobile number
+#                       of user 
+#   Note            :   None.
+*****************************************************/
 long long accountDetailsN::accountDetailsC::getAccountMobileNum()
 {
     return accountMobileNum;
 }
+/*****************************************************
+#   Function Name   :   getAccountName
+#   Description     :   this function provide the Name
+#                       of user 
+#   Note            :   None.
+*****************************************************/
 std::string accountDetailsN::accountDetailsC::getAccountName()
 {
     return accountName;
 }
+/*****************************************************
+#   Function Name   :   getAccountAddress
+#   Description     :   this function provide the address
+#                       of user 
+#   Note            :   None.
+*****************************************************/
 std::string accountDetailsN::accountDetailsC::getAccountAddress()       
 {
     return accountAddress;
 } 
+/*****************************************************
+#   Function Name   :   nameCheck
+#   Description     :   function check enterd name is 
+#                       valid or not.
+#                       name includes  uppercase, lower case and 
+                        space
+#   Note            :   None.
+*****************************************************/
 bool accountDetailsN::accountDetailsC::nameCheck(std::string name)
 {
     bool nameOk=false;
@@ -81,6 +171,14 @@ bool accountDetailsN::accountDetailsC::nameCheck(std::string name)
     }
     return nameOk;
 }
+/*****************************************************
+#   Function Name   :   checkAccountNumber
+#   Description     :   function check generated account number is 
+#                       valid or not.
+#                       account number is 4 digit and should 
+#                       not duplicated
+#   Note            :   None.
+*****************************************************/
 bool accountDetailsN::accountDetailsC::checkAccountNumber(unsigned int readGenratedAccNum)
 {
     bool flag=false;
@@ -98,6 +196,12 @@ bool accountDetailsN::accountDetailsC::checkAccountNumber(unsigned int readGenra
     }
     return flag;
 }
+/*****************************************************
+#   Function Name   :   generateAccountNumber
+#   Description     :   this function can generate the Acc Number
+#                       Account number should be 4 digits.
+#   Note            :   None.
+*****************************************************/
 int accountDetailsN::accountDetailsC::generateAccountNumber()
 {
     unsigned int randomAccNum; 
@@ -135,7 +239,11 @@ int accountDetailsN::accountDetailsC::generateAccountNumber()
 
     return randomAccNum;
 }
-
+/*****************************************************
+#   Function Name   :   setData
+#   Description     :   this function take inforamation from user
+#   Note            :   None.
+*****************************************************/
 void accountDetailsN::accountDetailsC::setData()
 {
     bool nameCheckBool=false;
@@ -192,6 +300,11 @@ void accountDetailsN::accountDetailsC::setData()
     }while(accountBalance<1000);
 
 }
+/*****************************************************
+#   Function Name   :   updateAccount
+#   Description     :   this function update the account balance.
+#   Note            :   None.
+*****************************************************/
 void accountDetailsN::accountDetailsC::updateAccount(int ammount)
 {
     accountBalance = ammount;

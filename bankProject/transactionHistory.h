@@ -1,26 +1,16 @@
-//File name : transactionHistory.h
-
-/*****************************************************
-#   File Name   :   transactionHistory.h
-#   Description :   This file define transaction history 
-#                   related functions.
-#   Note        :   None.
-*****************************************************/
+//transactionHistory.h
 #ifndef transactionHistory_H
 #define transactionHistory_H
 
-//!< header files
 #include<iostream>
 #include<fstream>
 #include<string>
 #include<vector>
-#include"bankingOperation.h"
 
-//!< namespace define
+
     namespace transHistN
     {
-        class transHistC:public bankingOperationN::bankingOperationC
-        {
+        class transHistC
             public:
                
                 char    creditDebitVar  ;

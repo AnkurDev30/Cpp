@@ -1,4 +1,11 @@
-//moneyTransfer.h
+//File name : moneyTransfer.h
+
+/*****************************************************
+#   File Name   :   moneyTransfer.h
+#   Description :   This file define money transfer
+#                   realated functions
+#   Note        :   None.
+*****************************************************/
 #ifndef moneyTransfer_H
 #define moneyTransfer_H
 
@@ -10,11 +17,12 @@
 #include"bankingOperation.h"
 #include"fileHandling.h"
 
+
+//!< define namespace and call.
 namespace moneyTransN
 {
     class moneyTransC
     {
-
         public:
             void moneyTransferFun();
             bool moneyValidFun(
