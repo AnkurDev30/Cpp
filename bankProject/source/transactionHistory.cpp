@@ -42,7 +42,7 @@ bool transHistN::transHistC::writeTxnHistory
 {
     std::ofstream file
     (
-        "TransactionHistory.csv",
+        "data/TransactionHistory.csv",
         std::ios::app
     );
 
@@ -88,7 +88,7 @@ bool transHistN::transHistC::readTxnHistory
 {
     std::ifstream file1
     (
-        "TransactionHistory.csv",
+        "data/TransactionHistory.csv",
         std::ios::in
     );
 

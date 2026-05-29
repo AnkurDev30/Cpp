@@ -183,7 +183,7 @@ bool accountDetailsN::accountDetailsC::checkAccountNumber(unsigned int readGenra
 {
     bool flag=false;
     unsigned int readAcctemp=0;
-    std::ifstream file2("AccountNumSave.txt",std::ios::in);
+    std::ifstream file2("data/AccountNumSave.txt",std::ios::in);
 
     while(file2>>readAcctemp)
     {
@@ -212,7 +212,7 @@ int accountDetailsN::accountDetailsC::generateAccountNumber()
         std::cout<<"account number generating....\n";
         srand(time(0)); 
 
-        std::ofstream file1("AccountNumSave.txt",std::ios::app);
+        std::ofstream file1("data/AccountNumSave.txt",std::ios::app);
         if(file1.is_open()==true)
         {
             randomAccNum = rand() % 9000 + 1000;

@@ -30,11 +30,11 @@ bool fileHandlingN::fileHandlingC:: writeDataInExcel
     std::string accountName    = Obj.getAccountName();
     std::string accountAddress = Obj.getAccountAddress(); 
 
-    //!open file in append mode.
-    std::ofstream file3("AccountDetails.csv",std::ios::app);
+    //!open file in append mode.bankProject/
+    std::ofstream file3("data/AccountDetails.csv",std::ios::app);
 
     //!open file in read mode.
-    std::ifstream file4("AccountDetails.csv",std::ios::in);
+    std::ifstream file4("data/AccountDetails.csv",std::ios::in);
 
     //!< if file is open 
     if(file3.is_open()==true)
@@ -48,9 +48,17 @@ bool fileHandlingN::fileHandlingC:: writeDataInExcel
                 file3<<"Account Number"<<","<<"Account Balance"<<","<<"Name"<<","<<"Address"<<","<<"Pin Code"<<","<<"Mobile"<<","<<std::endl;
             }
         }
+        else
+        {
+            std::cout<<"read file not open\n";
+        }
         //!< write data.
         file3<<accountNumber<<","<<accountBalance<<","<<accountName<<","<<accountAddress<<","<<accountPinCity<<","<<accountMobileNum<<","<<std::endl;        
         checkStatus = true;
+    }
+    else
+    {
+        std::cout<<"write file not open\n";
     }
     return checkStatus;
 }
@@ -71,7 +79,7 @@ bool fileHandlingN::fileHandlingC::readFullData
     accountDetailsN::accountDetailsC obj;
 
     //!< read file.
-    std::ifstream file1("AccountDetails.csv");
+    std::ifstream file1("data/AccountDetails.csv");
     //!< string for read.
     std::string line;
 
@@ -133,7 +141,7 @@ bool fileHandlingN::fileHandlingC::readFullData
 *****************************************************/
 void fileHandlingN::fileHandlingC::clearData()
 {
-    std::ofstream file("AccountDetails.csv", std::ios::trunc);
+    std::ofstream file("data/AccountDetails.csv", std::ios::trunc);
     file.close();
 }
 /*****************************************************
@@ -147,7 +155,7 @@ bool fileHandlingN::fileHandlingC::writeFullData
 )
 {
     bool ret;
-    std::ofstream file1("AccountDetails.csv",std::ios::out);
+    std::ofstream file1("data/AccountDetails.csv",std::ios::out);
 
     std::string line;
 
