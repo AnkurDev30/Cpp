@@ -36,7 +36,7 @@ bool genralOperationN::genralOperationC::checkNameWithSpace
 
     for(char ch:str)
     {
-        if(!(ch>='a' && ch<='z')||(ch==' '))
+        if(!((ch>='a' && ch<='z')||(ch==' ')))
         {
             retVal=false;
             break;
@@ -59,7 +59,10 @@ bool genralOperationN::genralOperationC:: checkVehicalNumber
     {
         temp = tolower(temp);
     }
-
+    if(vehicleNumber.length()!=10)
+    {
+        return false;
+    }
     if(checkVehicleNumberStatus == true)
     {
         if(vehicleNumber[0] >= 'a' && vehicleNumber[0] <= 'z')  

@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -std=c++14 -Iinclude
+CXXFLAGS = -Wall -std=c++14 -g -Iinclude
 
 TARGET = output/app
 

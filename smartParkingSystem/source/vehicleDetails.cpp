@@ -1,6 +1,36 @@
 //vehicleDetails.cpp
 #include"vehicleDetails.h"
 #include<vector>
+#include<fstream>
+#include<sstream>
+void vehicleDetailsN::vehicleDetailsC::readUpdateVehicleNumber(std::string vn)
+{
+    vehicleNumber = vn;
+}
+void vehicleDetailsN::vehicleDetailsC::readUpdateVehicleOwner(std::string ow)
+{
+    vehicleOwner = ow;
+}
+void vehicleDetailsN::vehicleDetailsC::readUpdateInTime(std::string it)
+{
+    inTime= it;
+}
+void vehicleDetailsN::vehicleDetailsC::readUpdateOutTime(std::string ot)
+{
+    outTime = ot;
+}
+void vehicleDetailsN::vehicleDetailsC::readUpdateMobileNumber(std::string mb)
+{
+    mobileNumber = mb;
+}
+void vehicleDetailsN::vehicleDetailsC::readUpdateVehicleType(std::string vt)
+{
+    vehicleType = vt;
+}
+void vehicleDetailsN::vehicleDetailsC::readUpdateSlotNumber(std::string st)
+{
+    slotNum =st;
+}
 void vehicleDetailsN::vehicleDetailsC::enterVehicleDetails
 (
     vehicleDetailsN::vehicleDetailsC &obj
@@ -11,12 +41,13 @@ void vehicleDetailsN::vehicleDetailsC::enterVehicleDetails
     parkingFirmName();//!< parking company name.
 
     //!< set vehicle details. 
-    obj.setVehicleType();
-    obj.setVehicleNumber();
-    obj.setVehicleOwner();
-    //!< entry time.
-    obj.setInTime();
-    obj.setMobileNumber();   
+      obj.setVehicleType();
+      obj.setVehicleNumber();
+      obj.setVehicleOwner();
+      obj.setInTime();
+      obj.readUpdateOutTime("------");
+      obj.setMobileNumber();   
+      obj.setSlotNumber();
 }
 void vehicleDetailsN::vehicleDetailsC::setVehicleType()
 {
@@ -28,9 +59,10 @@ void vehicleDetailsN::vehicleDetailsC::setVehicleType()
         clearScreen();
         parkingFirmName();
 
-        std::cout<<"Vehicle Type \n";
+        std::cout<<"1 Vehicle Type \n";
         getline(std::cin,vehicleType);
 
+        std::cout<<"2 Vehicle Type \n";
         retVal = checkVehicleType(vehicleType);
 
         if(retVal==false)
@@ -79,13 +111,40 @@ void vehicleDetailsN::vehicleDetailsC::readDataFromVehicleData
     obj.vehicleType = getVehicleType();
     
 }
-int getSlotNum()
+std::string vehicleDetailsN::vehicleDetailsC::getSlotNum()
 {
     return slotNum;
 }
-void setSlotNumber(int num)
+void vehicleDetailsN::vehicleDetailsC::setSlotNumber()
 {
-    slotNum = num;
+    std::string slot;
+    std::ifstream file("data/slotFile.csv");
+    std::string line;
+    std::string lastline;
+    
+    if(file.is_open()==true)
+    {
+
+        if(file.peek()==true)
+        {
+            slotNum="1";
+        }
+        else
+        {
+            while(getline(file,line))
+            {
+                if(!line.empty())
+                {
+                    lastline =line;
+                }
+            }      
+            std::stringstream st(lastline);
+            
+            getline(st,slotNum,',');      
+        }
+
+        std::cout<<"slotNumber = "<<slotNum<<std::endl;
+    }
 }
 void vehicleDetailsN::vehicleDetailsC::setVehicleNumber()
 {
@@ -157,11 +216,14 @@ void vehicleDetailsN::vehicleDetailsC::setInTime()
 {
     std::time_t now = std::time(0);
     inTime = std::ctime(&now);
+    inTime.pop_back();
+
 }
 void vehicleDetailsN::vehicleDetailsC::setOutTime()
 {
     std::time_t now = std::time(0);
     outTime = std::ctime(&now);
+    outTime.pop_back();
 }
 void vehicleDetailsN::vehicleDetailsC::updateOutTime(std::string oT)
 {

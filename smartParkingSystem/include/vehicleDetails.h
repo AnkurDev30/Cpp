@@ -14,15 +14,13 @@ namespace vehicleDetailsN
     class vehicleDetailsC:public genralOperationN::genralOperationC
     {
         private:
-            int slotNum;
+            std::string  slotNum;
             std::string vehicleNumber;
             std::string vehicleOwner;
             std::string inTime;
             std::string outTime;
             std::string mobileNumber;
             std::string vehicleType;
-            int espondHours;
-            int money;
         public:
 
             void setVehicleNumber();
@@ -31,7 +29,15 @@ namespace vehicleDetailsN
             void setOutTime();
             void setMobileNumber();
             void setVehicleType();
-            void setSlotNumber(int num);
+            void setSlotNumber();
+
+            void readUpdateVehicleNumber(std::string a);
+            void readUpdateVehicleOwner(std::string a);
+            void readUpdateInTime(std::string a);
+            void readUpdateOutTime(std::string a);
+            void readUpdateMobileNumber(std::string a);
+            void readUpdateVehicleType(std::string a);
+            void readUpdateSlotNumber(std::string a);
 
             std::string getVehicleNumber();
             std::string getVehicleOwner();
@@ -40,7 +46,7 @@ namespace vehicleDetailsN
             std::string getMobileNumber();
             std::string getVehicleType();
             
-            int getSlotNum();
+            std::string getSlotNum();
             void updateOutTime(std::string oT);
             void displayVehicalDetails();
             void enterVehicleDetails(vehicleDetailsN::vehicleDetailsC &obj);
