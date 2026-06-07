@@ -8,48 +8,48 @@
 
 void parkingOperationN::parkingOperationC::fillAvailableSlot
 (
-    std::vector<vehicleDetailsN::vehicleDetailsC> &vecPark,
-    int index
+    std::vector<vehicleDetailsN::vehicleDetailsC> &v1,
+    std::vector<vehicleDetailsN::vehicleDetailsC> &v2,
+    int index,
+    std::string slt
 )
 {
-    int lastIndex = vecPark.size()-1;
+
     vehicleDetailsN::vehicleDetailsC lastIndexDataObj;
     
-    lastIndexDataObj.readUpdateSlotNumber(vecPark[lastIndex].getSlotNum());
-    lastIndexDataObj.readUpdateVehicleNumber(vecPark[lastIndex].getVehicleNumber());
-    lastIndexDataObj.readUpdateVehicleOwner(vecPark[lastIndex].getVehicleOwner());
-    lastIndexDataObj.readUpdateInTime(vecPark[lastIndex].getInTime());
-    lastIndexDataObj.readUpdateOutTime(vecPark[lastIndex].getOutTime());
-    lastIndexDataObj.readUpdateMobileNumber(vecPark[lastIndex].getMobileNumber());
-    lastIndexDataObj.readUpdateVehicleType(vecPark[lastIndex].getMobileNumber());
+    lastIndexDataObj.readUpdateSlotNumber(slt);
+    lastIndexDataObj.readUpdateVehicleNumber(v2[0].getVehicleNumber());
+    lastIndexDataObj.readUpdateVehicleOwner(v2[0].getVehicleOwner());
+    lastIndexDataObj.readUpdateInTime(v2[0].getInTime());
+    lastIndexDataObj.readUpdateOutTime(v2[0].getOutTime());
+    lastIndexDataObj.readUpdateMobileNumber(v2[0].getMobileNumber());
+    lastIndexDataObj.readUpdateVehicleType(v2[0].getMobileNumber());
 
-    vecPark.pop_back();
-
-    vecPark[index] = lastIndexDataObj;
+    v1[index] = lastIndexDataObj;
 
 }
-bool parkingOperationN::parkingOperationC::readData()
-{
-    bool readStatus = false;
-    
-    std::string line;
-    std::ofstream file("data/slotFile.txt");
-    std::ifstream fileR("data/slotFile.txt");
-    if(file.is_open()==true)
-    {
-        readStatus = true;
-        if(fileR.peek() == EOF)
-        {
-            std::cout<<"File is Empty\n";
-        }
-        else
-        {
-
-        }
-       
-    }
-    return readStatus;
-}
+//bool parkingOperationN::parkingOperationC::readData()
+//{
+//    bool readStatus = false;
+//    
+//    std::string line;
+//    std::ofstream file("data/slotFile.txt");
+//    std::ifstream fileR("data/slotFile.txt");
+//    if(file.is_open()==true)
+//    {
+//        readStatus = true;
+//        if(fileR.peek() == EOF)
+//        {
+//            std::cout<<"File is Empty\n";
+//        }
+//        else
+//        {
+//
+//        }
+//       
+//    }
+//    return readStatus;
+//}
 void parkingOperationN::parkingOperationC::readFullData
 (
     std::vector<vehicleDetailsN::vehicleDetailsC> &vecPark
@@ -74,7 +74,7 @@ void parkingOperationN::parkingOperationC::readFullData
         //read line by line
         while(getline(file,line))
         {
-            //keep data in ss.
+            //keep data in ss.vecPark
             std::stringstream ss(line);
             //diffrentiate by ,
             getline(ss,slot,',');
@@ -102,16 +102,17 @@ void parkingOperationN::parkingOperationC::readFullData
     {
 
     }
-
-
 }
 int  parkingOperationN::parkingOperationC::getBlankSlot
 (
     std::vector<vehicleDetailsN::vehicleDetailsC> &vecPark,
-    bool *avaliableFlag
+    bool *avaliableFlag,
+    std::string *slot
 )
 {
     int index = 0;
+    std::string slt;
+
     for(size_t i=0;i<vecPark.size();i++)
     {
     #if(DEBUG == 1)
@@ -121,6 +122,8 @@ int  parkingOperationN::parkingOperationC::getBlankSlot
         if("XXXXX" == vecPark[i].getVehicleNumber())
         {
             index =i;
+            slt = vecPark[i].getSlotNum();
+            *slot=slt;
             *avaliableFlag = true;
             break;
         }
@@ -134,28 +137,28 @@ bool parkingOperationN::parkingOperationC::writeDataEntry
 {
     bool writeStatus = false;
     bool availableFalg=false;
-    std::ofstream fileW("data/slotFile.csv",std::ios::app); 
+    
     std::ifstream fileR("data/slotFile.csv");
+    std::vector<vehicleDetailsN::vehicleDetailsC> vecReadFull;
 
-    std::string vehicleNumber;
-    std::string vehicleOwner;
-    std::string inTime;
-    std::string outTime;
-    std::string mobileNumber;
-    std::string vehicleType;
     std::string line;
     std::string lastline;
     int slotNumber = 0;
-    
-    int index = getBlankSlot(vecPark,&availableFalg);
+    std::string slotNumberFromAvailFalg;
+    readFullData(vecReadFull);
+
+    int index = getBlankSlot(vecReadFull,&availableFalg,&slotNumberFromAvailFalg);
     #if(DEBUG == 1)
         std::cout<<" index = "<<index<<std::endl;
         std::cout<<" availableFalg = "<<availableFalg<<std::endl;
     #endif
     if(availableFalg == true)
     {
+        #if(DEBUG == 1)
         std::cout<<"slot available\n";
-        fillAvailableSlot(vecPark,index);
+        #endif
+        fillAvailableSlot(vecReadFull,vecPark,index,slotNumberFromAvailFalg);
+        pasteData(vecReadFull,slotNumber);
     }
     else
     {
@@ -166,47 +169,90 @@ bool parkingOperationN::parkingOperationC::writeDataEntry
                 lastline =line;
             }
         }
+
         std::stringstream st(lastline);
         st>>slotNumber;
+        #if(DEBUG == 1)
         std::cout<<"slotNumber = "<<slotNumber<<std::endl;
+        #endif
+        slotNumber++;
+
+        pasteData1(vecPark,slotNumber);
     }
 
-    if((fileW.is_open())==true)
-    {
-        if(availableFalg != true)
-        {
-            slotNumber++;
-        }
-
-        for(int i=0;i<(int)vecPark.size();i++)
-        {
-            if(availableFalg == true)
-            {
-                std::string  slt = vecPark[i].getSlotNum();
-                std::stringstream st(slt);
-                st>>slotNumber;
-            }
-            vehicleNumber   = vecPark[i].getVehicleNumber();
-            vehicleOwner    = vecPark[i].getVehicleOwner();
-            inTime          = vecPark[i].getInTime();
-            outTime         = vecPark[i].getOutTime(); ;
-            mobileNumber    = vecPark[i].getMobileNumber() ;
-            vehicleType     = vecPark[i].getVehicleType();
-            
-            fileW<<slotNumber<<","
-            <<vehicleNumber<<","
-            <<vehicleOwner<<","
-            <<mobileNumber<<","
-            <<vehicleType<<","
-            <<inTime<<","
-            <<outTime<<std::endl;
-        }
-    }
-    else
-    {
-        writeStatus =false;
-    }
 return writeStatus;
+}
+void parkingOperationN::parkingOperationC::pasteData1
+(
+    std::vector<vehicleDetailsN::vehicleDetailsC> &v1,
+    int slt
+)
+{
+    int  slotNumber = slt;  
+    std::string vehicleNumber;
+    std::string vehicleOwner;
+    std::string inTime;
+    std::string outTime;
+    std::string mobileNumber;
+    std::string vehicleType;
+    std::ofstream fileW("data/slotFile.csv",std::ios::app);
+    for(size_t i=0;i<v1.size();i++)
+    { 
+        vehicleNumber   = v1[i].getVehicleNumber();
+        vehicleOwner    = v1[i].getVehicleOwner();
+        inTime          = v1[i].getInTime();
+        outTime         = v1[i].getOutTime(); ;
+        mobileNumber    = v1[i].getMobileNumber() ;
+        vehicleType     = v1[i].getVehicleType();
+
+        fileW<<slotNumber<<","
+        <<vehicleNumber<<","
+        <<vehicleOwner<<","
+        <<mobileNumber<<","
+        <<vehicleType<<","
+        <<inTime<<","
+        <<outTime<<std::endl;
+        
+    }
+}
+void parkingOperationN::parkingOperationC::pasteData
+(
+    std::vector<vehicleDetailsN::vehicleDetailsC> &v1,
+    int slt
+)
+{
+    int  slotNumber = slt;  
+    std::string vehicleNumber;
+    std::string vehicleOwner;
+    std::string inTime;
+    std::string outTime;
+    std::string mobileNumber;
+    std::string vehicleType;
+
+    std::ofstream fileW("data/slotFile.csv");
+
+    for(size_t i=0;i<v1.size();i++)
+    { 
+        vehicleNumber   = v1[i].getVehicleNumber();
+        vehicleOwner    = v1[i].getVehicleOwner();
+        inTime          = v1[i].getInTime();
+        outTime         = v1[i].getOutTime(); ;
+        mobileNumber    = v1[i].getMobileNumber() ;
+        vehicleType     = v1[i].getVehicleType();
+
+        std::string  slt = v1[i].getSlotNum();
+        std::stringstream st(slt);
+        st>>slotNumber;
+
+        fileW<<slotNumber<<","
+        <<vehicleNumber<<","
+        <<vehicleOwner<<","
+        <<mobileNumber<<","
+        <<vehicleType<<","
+        <<inTime<<","
+        <<outTime<<std::endl;
+
+    }
 }
 bool parkingOperationN::parkingOperationC::writeDataFull(std::vector<vehicleDetailsN::vehicleDetailsC> &vecPark)
 {
@@ -221,8 +267,9 @@ bool parkingOperationN::parkingOperationC::writeDataFull(std::vector<vehicleDeta
     std::string line;
     std::string lastline;
     int slotNumber = 0;
-
+    #if(DEBUG == 1)
     std::cout<<"slotNumber = "<<slotNumber<<std::endl;
+    #endif
     std::ofstream fileW("data/slotFile.csv"); 
     if((fileW.is_open())==true)
     {
@@ -267,12 +314,14 @@ void parkingOperationN::parkingOperationC::vehicleEnrty()
     enterVehicleDetails(objectVeh);
     
     vecPark.push_back(objectVeh);
-    writeDataEntry(vecPark);
+    (void)writeDataEntry(vecPark);
 
 }
 void parkingOperationN::parkingOperationC::vehicleExit()
 {
+    #if(DEBUG == 1)
     std::cout<<"exit option\n";
+    #endif
     int slotNum;
     std::string vehicleNumber;
 

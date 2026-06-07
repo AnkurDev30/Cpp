@@ -11,17 +11,26 @@
 #include"parkingOperation.h"
 #include"genralOperation.h"
 
-#define DEBUG 1
+#define DEBUG 0
+
+
     namespace parkingOperationN
     {
         class parkingOperationC:public vehicleDetailsN::vehicleDetailsC
         {
             private:
-                bool readData();
+                //bool readData();
                 bool writeDataEntry(std::vector<vehicleDetailsN::vehicleDetailsC> &vecPark);
                 bool writeDataFull(std::vector<vehicleDetailsN::vehicleDetailsC> &vecPark);
-                int  getBlankSlot(std::vector<vehicleDetailsN::vehicleDetailsC> &vecPark,bool *boflag);
-                void fillAvailableSlot(std::vector<vehicleDetailsN::vehicleDetailsC> &vecPark,int index);
+                int  getBlankSlot(std::vector<vehicleDetailsN::vehicleDetailsC> &vecPark,bool *boflag,std::string *slot);
+                void fillAvailableSlot(   
+                    std::vector<vehicleDetailsN::vehicleDetailsC> &v1,
+                    std::vector<vehicleDetailsN::vehicleDetailsC> &v2,
+                    int index,
+                    std::string slt
+                );
+                void pasteData1(std::vector<vehicleDetailsN::vehicleDetailsC> &v1,int slt);
+                void pasteData(std::vector<vehicleDetailsN::vehicleDetailsC> &v1,int slt);
             public:
                 void readFullData(std::vector<vehicleDetailsN::vehicleDetailsC> &vecPark);
                 void vehicleEnrty();

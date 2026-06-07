@@ -59,10 +59,9 @@ void vehicleDetailsN::vehicleDetailsC::setVehicleType()
         clearScreen();
         parkingFirmName();
 
-        std::cout<<"1 Vehicle Type \n";
+        std::cout<<"Vehicle Type \n";
         getline(std::cin,vehicleType);
 
-        std::cout<<"2 Vehicle Type \n";
         retVal = checkVehicleType(vehicleType);
 
         if(retVal==false)
