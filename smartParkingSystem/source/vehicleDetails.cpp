@@ -1,24 +1,76 @@
-//vehicleDetails.cpp
+/******************************************************************************
+ * File Name    : vehicleDetails.cpp
+ * Description  : Vehicle information management module.
+ *                Handles vehicle data entry, validation, update and display.
+ *
+ * Author       : Ankur Chourey
+ * Language     : C++14
+ ******************************************************************************/
 #include"vehicleDetails.h"
 #include<vector>
 #include<fstream>
 #include<sstream>
+/******************************************************************************
+ * Function Name : readUpdateVehicleNumber
+ * Description   : Update vehicle registration number.
+ *
+ * Parameters    :
+ *      vn -> Vehicle Number
+ *
+ * Return        : None
+ ******************************************************************************/
 void vehicleDetailsN::vehicleDetailsC::readUpdateVehicleNumber(std::string vn)
 {
     vehicleNumber = vn;
 }
+/******************************************************************************
+ * Function Name : readUpdateVehicleOwner
+ * Description   : Update vehicle owner name.
+ *
+ * Parameters    :
+ *      ow -> Owner Name
+ *
+ * Return        : None
+ ******************************************************************************/
 void vehicleDetailsN::vehicleDetailsC::readUpdateVehicleOwner(std::string ow)
 {
     vehicleOwner = ow;
 }
+/******************************************************************************
+ * Function Name : readUpdateInTime
+ * Description   : Update vehicle entry time.
+ *
+ * Parameters    :
+ *      it -> Entry Time
+ *
+ * Return        : None
+ ******************************************************************************/
 void vehicleDetailsN::vehicleDetailsC::readUpdateInTime(std::string it)
 {
     inTime= it;
 }
+/******************************************************************************
+ * Function Name : readUpdateOutTime
+ * Description   : Update vehicle exit time.
+ *
+ * Parameters    :
+ *      ot -> Exit Time
+ *
+ * Return        : None
+ ******************************************************************************/
 void vehicleDetailsN::vehicleDetailsC::readUpdateOutTime(std::string ot)
 {
     outTime = ot;
 }
+/******************************************************************************
+ * Function Name : readUpdateMobileNumber
+ * Description   : Update mobile number.
+ *
+ * Parameters    :
+ *      mb -> Mobile Number
+ *
+ * Return        : None
+ ******************************************************************************/
 void vehicleDetailsN::vehicleDetailsC::readUpdateMobileNumber(std::string mb)
 {
     mobileNumber = mb;
@@ -31,6 +83,15 @@ void vehicleDetailsN::vehicleDetailsC::readUpdateSlotNumber(std::string st)
 {
     slotNum =st;
 }
+/******************************************************************************
+ * Function Name : enterVehicleDetails
+ * Description   : Capture complete vehicle information from user.
+ *
+ * Parameters    :
+ *      obj -> Vehicle object.
+ *
+ * Return        : None
+ ******************************************************************************/
 void vehicleDetailsN::vehicleDetailsC::enterVehicleDetails
 (
     vehicleDetailsN::vehicleDetailsC &obj
@@ -49,6 +110,14 @@ void vehicleDetailsN::vehicleDetailsC::enterVehicleDetails
       obj.setMobileNumber();   
       obj.setSlotNumber();
 }
+/******************************************************************************
+ * Function Name : setVehicleType
+ * Description   : Capture and validate vehicle type.
+ *
+ * Parameters    : None
+ *
+ * Return        : None
+ ******************************************************************************/
 void vehicleDetailsN::vehicleDetailsC::setVehicleType()
 {
     bool retVal = false;
@@ -73,6 +142,15 @@ void vehicleDetailsN::vehicleDetailsC::setVehicleType()
     }
     while(retVal==false );
 }
+/******************************************************************************
+ * Function Name : getVehicleType
+ * Description   : Return vehicle type.
+ *
+ * Parameters    : None
+ *
+ * Return        :
+ *      Vehicle Type
+ ******************************************************************************/
 std::string vehicleDetailsN::vehicleDetailsC::getVehicleType()
 {
     return vehicleType;
@@ -97,6 +175,15 @@ std::string vehicleDetailsN::vehicleDetailsC::getMobileNumber()
 {
     return mobileNumber;
 }
+/******************************************************************************
+ * Function Name : readDataFromVehicleData
+ * Description   : Copy current vehicle object data into another object.
+ *
+ * Parameters    :
+ *      obj -> Destination object.
+ *
+ * Return        : None
+ ******************************************************************************/
 void vehicleDetailsN::vehicleDetailsC::readDataFromVehicleData
 (
     vehicleDetailsN::vehicleDetailsC &obj
@@ -114,6 +201,14 @@ std::string vehicleDetailsN::vehicleDetailsC::getSlotNum()
 {
     return slotNum;
 }
+/******************************************************************************
+ * Function Name : setSlotNumber
+ * Description   : Read last allocated slot from file and assign slot.
+ *
+ * Parameters    : None
+ *
+ * Return        : None
+ ******************************************************************************/
 void vehicleDetailsN::vehicleDetailsC::setSlotNumber()
 {
     std::string slot;
@@ -145,6 +240,14 @@ void vehicleDetailsN::vehicleDetailsC::setSlotNumber()
         std::cout<<"slotNumber = "<<slotNum<<std::endl;
     }
 }
+/******************************************************************************
+ * Function Name : setVehicleNumber
+ * Description   : Capture and validate vehicle registration number.
+ *
+ * Parameters    : None
+ *
+ * Return        : None
+ ******************************************************************************/
 void vehicleDetailsN::vehicleDetailsC::setVehicleNumber()
 {
     bool retVal =false;
@@ -188,6 +291,14 @@ void vehicleDetailsN::vehicleDetailsC::setVehicleNumber()
     }
     while(retVal==false );
 }
+/******************************************************************************
+ * Function Name : setVehicleOwner
+ * Description   : Capture and validate vehicle owner name.
+ *
+ * Parameters    : None
+ *
+ * Return        : None
+ ******************************************************************************/
 void vehicleDetailsN::vehicleDetailsC::setVehicleOwner()
 {
     bool retVal =false;
@@ -211,6 +322,14 @@ void vehicleDetailsN::vehicleDetailsC::setVehicleOwner()
     }
     while(retVal==false );
 }
+/******************************************************************************
+ * Function Name : setInTime
+ * Description   : Store current system time as vehicle entry time.
+ *
+ * Parameters    : None
+ *
+ * Return        : None
+ ******************************************************************************/
 void vehicleDetailsN::vehicleDetailsC::setInTime()
 {
     std::time_t now = std::time(0);
@@ -218,16 +337,41 @@ void vehicleDetailsN::vehicleDetailsC::setInTime()
     inTime.pop_back();
 
 }
+/******************************************************************************
+ * Function Name : setOutTime
+ * Description   : Store current system time as vehicle exit time.
+ *
+ * Parameters    : None
+ *
+ * Return        : None
+ ******************************************************************************/
 void vehicleDetailsN::vehicleDetailsC::setOutTime()
 {
     std::time_t now = std::time(0);
     outTime = std::ctime(&now);
     outTime.pop_back();
 }
+/******************************************************************************
+ * Function Name : updateOutTime
+ * Description   : Update vehicle exit time.
+ *
+ * Parameters    :
+ *      oT -> Exit Time
+ *
+ * Return        : None
+ ******************************************************************************/
 void vehicleDetailsN::vehicleDetailsC::updateOutTime(std::string oT)
 {
     outTime = oT;
 }
+/******************************************************************************
+ * Function Name : setMobileNumber
+ * Description   : Capture and validate driver mobile number.
+ *
+ * Parameters    : None
+ *
+ * Return        : None
+ ******************************************************************************/
 void vehicleDetailsN::vehicleDetailsC::setMobileNumber()
 {
     bool validFlag = false;
@@ -255,6 +399,14 @@ void vehicleDetailsN::vehicleDetailsC::setMobileNumber()
         }
     }while(validFlag == false);
 }
+/******************************************************************************
+ * Function Name : displayVehicalDetails
+ * Description   : Display complete vehicle information.
+ *
+ * Parameters    : None
+ *
+ * Return        : None
+ ******************************************************************************/
 void vehicleDetailsN::vehicleDetailsC::displayVehicalDetails()
 {
     clearScreen();

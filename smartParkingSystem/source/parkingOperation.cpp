@@ -5,7 +5,20 @@
 #include<ctime>
 #include<vector>
 #include"parkingOperation.h"
-
+/******************************************************************************
+ * Function Name  : fillAvailableSlot
+ * Description    : Update an available parking slot with new vehicle data.
+ *
+ * Parameters     :
+ *      v1    -> Main parking slot vector.
+ *      v2    -> New vehicle data vector.
+ *      index -> Available slot index.
+ *      slt   -> Slot number.
+ *
+ * Return         : None
+ *
+ * Author         : Ankur Chourey
+ ******************************************************************************/
 void parkingOperationN::parkingOperationC::fillAvailableSlot
 (
     std::vector<vehicleDetailsN::vehicleDetailsC> &v1,
@@ -28,28 +41,16 @@ void parkingOperationN::parkingOperationC::fillAvailableSlot
     v1[index] = lastIndexDataObj;
 
 }
-//bool parkingOperationN::parkingOperationC::readData()
-//{
-//    bool readStatus = false;
-//    
-//    std::string line;
-//    std::ofstream file("data/slotFile.txt");
-//    std::ifstream fileR("data/slotFile.txt");
-//    if(file.is_open()==true)
-//    {
-//        readStatus = true;
-//        if(fileR.peek() == EOF)
-//        {
-//            std::cout<<"File is Empty\n";
-//        }
-//        else
-//        {
-//
-//        }
-//       
-//    }
-//    return readStatus;
-//}
+/******************************************************************************
+ * Function Name  : readFullData
+ * Description    : Read complete parking data from CSV file and store it
+ *                  into vector.
+ *
+ * Parameters     :
+ *      vecPark -> Vector used to store parking records.
+ *
+ * Return         : None
+ ******************************************************************************/
 void parkingOperationN::parkingOperationC::readFullData
 (
     std::vector<vehicleDetailsN::vehicleDetailsC> &vecPark
@@ -103,6 +104,18 @@ void parkingOperationN::parkingOperationC::readFullData
 
     }
 }
+/******************************************************************************
+ * Function Name  : getBlankSlot
+ * Description    : Search first available parking slot marked as XXXXX.
+ *
+ * Parameters     :
+ *      vecPark        -> Parking slot vector.
+ *      availableFlag -> Slot available status.
+ *      slot          -> Available slot number.
+ *
+ * Return         :
+ *      Index of available slot.
+ ******************************************************************************/
 int  parkingOperationN::parkingOperationC::getBlankSlot
 (
     std::vector<vehicleDetailsN::vehicleDetailsC> &vecPark,
@@ -130,6 +143,17 @@ int  parkingOperationN::parkingOperationC::getBlankSlot
     }
     return index;
 }
+/******************************************************************************
+ * Function Name  : writeDataEntry
+ * Description    : Add new vehicle entry into parking database.
+ *
+ * Parameters     :
+ *      vecPark -> Vehicle data vector.
+ *
+ * Return         :
+ *      true  -> Success
+ *      false -> Failure
+ ******************************************************************************/
 bool parkingOperationN::parkingOperationC::writeDataEntry
 (
     std::vector<vehicleDetailsN::vehicleDetailsC> &vecPark
@@ -182,6 +206,16 @@ bool parkingOperationN::parkingOperationC::writeDataEntry
 
 return writeStatus;
 }
+/******************************************************************************
+ * Function Name  : pasteData1
+ * Description    : Append vehicle information into CSV file.
+ *
+ * Parameters     :
+ *      v1  -> Vehicle vector.
+ *      slt -> Slot number.
+ *
+ * Return         : None
+ ******************************************************************************/
 void parkingOperationN::parkingOperationC::pasteData1
 (
     std::vector<vehicleDetailsN::vehicleDetailsC> &v1,
@@ -215,6 +249,16 @@ void parkingOperationN::parkingOperationC::pasteData1
         
     }
 }
+/******************************************************************************
+ * Function Name  : pasteData
+ * Description    : Rewrite complete parking file using vector data.
+ *
+ * Parameters     :
+ *      v1  -> Vehicle vector.
+ *      slt -> Slot number.
+ *
+ * Return         : None
+ ******************************************************************************/
 void parkingOperationN::parkingOperationC::pasteData
 (
     std::vector<vehicleDetailsN::vehicleDetailsC> &v1,
@@ -254,7 +298,21 @@ void parkingOperationN::parkingOperationC::pasteData
 
     }
 }
-bool parkingOperationN::parkingOperationC::writeDataFull(std::vector<vehicleDetailsN::vehicleDetailsC> &vecPark)
+/******************************************************************************
+ * Function Name  : writeDataFull
+ * Description    : Store complete parking vector into CSV file.
+ *
+ * Parameters     :
+ *      vecPark -> Vehicle record vector.
+ *
+ * Return         :
+ *      true  -> Success
+ *      false -> Failure
+ ******************************************************************************/
+bool parkingOperationN::parkingOperationC::writeDataFull
+(
+    std::vector<vehicleDetailsN::vehicleDetailsC> &vecPark
+)
 {
     bool writeStatus = false;
     
@@ -300,6 +358,14 @@ bool parkingOperationN::parkingOperationC::writeDataFull(std::vector<vehicleDeta
     }
 return writeStatus;
 }
+/******************************************************************************
+ * Function Name  : vehicleEnrty
+ * Description    : Capture vehicle details and allocate parking slot.
+ *
+ * Parameters     : None
+ *
+ * Return         : None
+ ******************************************************************************/
 void parkingOperationN::parkingOperationC::vehicleEnrty()
 {
     //vector.
@@ -317,6 +383,14 @@ void parkingOperationN::parkingOperationC::vehicleEnrty()
     (void)writeDataEntry(vecPark);
 
 }
+/******************************************************************************
+ * Function Name  : vehicleExit
+ * Description    : Process vehicle exit, calculate charges and free slot.
+ *
+ * Parameters     : None
+ *
+ * Return         : None
+ ******************************************************************************/
 void parkingOperationN::parkingOperationC::vehicleExit()
 {
     #if(DEBUG == 1)
@@ -371,6 +445,16 @@ void parkingOperationN::parkingOperationC::vehicleExit()
     }
 
 }
+/******************************************************************************
+ * Function Name  : saveData
+ * Description    : Save completed parking transaction into history file.
+ *
+ * Parameters     :
+ *      obj   -> Vehicle object.
+ *      money -> Parking charge.
+ *
+ * Return         : None
+ ******************************************************************************/
 void parkingOperationN::parkingOperationC::saveData
 (
     vehicleDetailsN::vehicleDetailsC obj,
@@ -406,6 +490,18 @@ void parkingOperationN::parkingOperationC::saveData
 
     }
 }
+/******************************************************************************
+ * Function Name  : checkNumberAvailableOrNot
+ * Description    : Verify vehicle number exists in parking database.
+ *
+ * Parameters     :
+ *      vehicleNumber -> Vehicle number.
+ *      slot          -> Slot number output.
+ *
+ * Return         :
+ *      true  -> Vehicle found.
+ *      false -> Vehicle not found.
+ ******************************************************************************/
 bool parkingOperationN::parkingOperationC::checkNumberAvailableOrNot
 (
     std::string vehicleNumber,
@@ -451,6 +547,17 @@ void parkingOperationN::parkingOperationC::History()
 {
 
 }
+/******************************************************************************
+ * Function Name  : moneyCalcAsPerTime
+ * Description    : Calculate parking charge using entry and exit time.
+ *
+ * Parameters     :
+ *      inTime  -> Vehicle entry time.
+ *      outTime -> Vehicle exit time.
+ *
+ * Return         :
+ *      Calculated parking amount.
+ ******************************************************************************/
 unsigned int calculationN::calculationC::moneyCalcAsPerTime
 (
     std::string inTime,std::string outTime
@@ -525,6 +632,17 @@ unsigned int calculationN::calculationC::moneyCalcAsPerTime
     }    
     return money;
 }
+/******************************************************************************
+ * Function Name  : monthCalcFun
+ * Description    : Calculate month difference between two dates.
+ *
+ * Parameters     :
+ *      y1,y2 -> Years.
+ *      m1,m2 -> Months.
+ *
+ * Return         :
+ *      Month difference.
+ ******************************************************************************/
 int calculationN::calculationC::monthCalcFun
 (
     int y1,
@@ -559,6 +677,16 @@ int calculationN::calculationC::monthCalcFun
     }
     return val;
 }
+/******************************************************************************
+ * Function Name  : monthFun
+ * Description    : Convert month string into numeric month.
+ *
+ * Parameters     :
+ *      month -> Month string (Jan, Feb, etc.)
+ *
+ * Return         :
+ *      Numeric month value.
+ ******************************************************************************/
 int calculationN::calculationC::monthFun(std::string month)
 {
     int mon =0;
@@ -577,7 +705,18 @@ int calculationN::calculationC::monthFun(std::string month)
     if(month == "Dec") mon = 12;
 
     return mon;
-};
+}
+/******************************************************************************
+ * Function Name  : moneyCalc
+ * Description    : Calculate parking amount based on parking duration.
+ *
+ * Parameters     :
+ *      hr  -> Hours.
+ *      min -> Minutes.
+ *
+ * Return         :
+ *      Parking charge.
+ ******************************************************************************/
 unsigned int calculationN::calculationC::moneyCalc(int hr,int min)
 {
     unsigned int money = 0;
@@ -607,3 +746,4 @@ unsigned int calculationN::calculationC::moneyCalc(int hr,int min)
     }
     return money;
 }
+//end of file

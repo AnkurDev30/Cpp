@@ -1,7 +1,19 @@
-//genralOperation.cpp
-
+/******************************************************************************
+ * File Name    : genralOperation.cpp
+ * Description  : Common utility functions, validation functions and
+ *                login management implementation for Smart Parking System.
+ *
+ * Author       : Ankur Chourey
+ * Language     : C++14
+ ******************************************************************************/
 #include"genralOperation.h"
-
+/******************************************************************************
+ * Function Name : clearScreen
+ * Description   : Clear terminal screen.
+ *
+ * Parameters    : None
+ * Return        : None
+ ******************************************************************************/
 void genralOperationN::genralOperationC::clearScreen()
 {
     #ifdef _WIN32
@@ -10,6 +22,13 @@ void genralOperationN::genralOperationC::clearScreen()
         system("clear");
     #endif
 }
+/******************************************************************************
+ * Function Name : lines
+ * Description   : Display separator line.
+ *
+ * Parameters    : None
+ * Return        : None
+ ******************************************************************************/
 void genralOperationN::genralOperationC::lines()
 {
     for(int i=0;i<50;i++)
@@ -17,6 +36,13 @@ void genralOperationN::genralOperationC::lines()
 
     std::cout<<"\n";
 }
+/******************************************************************************
+ * Function Name : parkingFirmName
+ * Description   : Display parking company banner and charge information.
+ *
+ * Parameters    : None
+ * Return        : None
+ ******************************************************************************/
 void genralOperationN::genralOperationC::parkingFirmName()
 {
     lines();
@@ -27,6 +53,17 @@ void genralOperationN::genralOperationC::parkingFirmName()
 
     lines();
 }
+/******************************************************************************
+ * Function Name : checkNameWithSpace
+ * Description   : Validate name containing alphabet characters and spaces.
+ *
+ * Parameters    :
+ *      str -> Input string.
+ *
+ * Return        :
+ *      true  -> Valid
+ *      false -> Invalid
+ ******************************************************************************/
 bool genralOperationN::genralOperationC::checkNameWithSpace
 (
     std::string str
@@ -45,6 +82,18 @@ bool genralOperationN::genralOperationC::checkNameWithSpace
 
     return retVal;
 }
+/******************************************************************************
+ * Function Name : checkVehicalNumber
+ * Description   : Validate vehicle registration number.
+ *                 Example: MP09WE1234
+ *
+ * Parameters    :
+ *      vehicleNumber -> Vehicle number.
+ *
+ * Return        :
+ *      true  -> Valid
+ *      false -> Invalid
+ ******************************************************************************/
 bool genralOperationN::genralOperationC:: checkVehicalNumber
 (
     std::string vehicleNumber
@@ -150,6 +199,17 @@ bool genralOperationN::genralOperationC:: checkVehicalNumber
    // std::cout<<"checkVehicleNumberStatus2 = "<<checkVehicleNumberStatus<<std::endl;
     return checkVehicleNumberStatus;
 }
+/******************************************************************************
+ * Function Name : checkOnlyNumber
+ * Description   : Verify string contains digits only.
+ *
+ * Parameters    :
+ *      numberStr -> Numeric string.
+ *
+ * Return        :
+ *      true  -> Valid
+ *      false -> Invalid
+ ******************************************************************************/
 bool genralOperationN::genralOperationC::checkOnlyNumber
 (
     std::string numberStr
@@ -166,6 +226,17 @@ bool genralOperationN::genralOperationC::checkOnlyNumber
     }
     return checkStatus;
 }
+/******************************************************************************
+ * Function Name : checkNameStaus
+ * Description   : Verify string contains alphabet characters only.
+ *
+ * Parameters    :
+ *      name -> Input name.
+ *
+ * Return        :
+ *      true  -> Valid
+ *      false -> Invalid
+ ******************************************************************************/
 bool genralOperationN::genralOperationC::checkNameStaus
 (
     std::string name
@@ -190,11 +261,31 @@ bool genralOperationN::genralOperationC::checkNameStaus
     }
     return boNameCheck;
 }
+/******************************************************************************
+ * Function Name : cinIgnore
+ * Description   : Clear input buffer.
+ *
+ * Parameters    : None
+ * Return        : None
+ ******************************************************************************/
 void genralOperationN::genralOperationC::cinIgnore()
 {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
-
+/******************************************************************************
+ * Function Name : checkVehicleType
+ * Description   : Validate vehicle type.
+ *                 Supported:
+ *                 2, two
+ *                 4, four
+ *
+ * Parameters    :
+ *      vType -> Vehicle type.
+ *
+ * Return        :
+ *      true  -> Valid
+ *      false -> Invalid
+ ******************************************************************************/
 bool genralOperationN::genralOperationC::checkVehicleType(std::string vType)
 {
     bool checkVType = false;
@@ -214,6 +305,17 @@ bool genralOperationN::genralOperationC::checkVehicleType(std::string vType)
 
     return checkVType ;
 }
+/******************************************************************************
+ * Function Name : checkNameAndNumStaus
+ * Description   : Validate alpha-numeric string.
+ *
+ * Parameters    :
+ *      nameForCheck -> Input string.
+ *
+ * Return        :
+ *      true  -> Valid
+ *      false -> Invalid
+ ******************************************************************************/
 bool genralOperationN::genralOperationC::checkNameAndNumStaus(std::string nameForCheck)
 {
     bool boNameCheck =false;
@@ -239,6 +341,13 @@ bool genralOperationN::genralOperationC::checkNameAndNumStaus(std::string nameFo
   //  std::cout<<"boNameCheck = "<<boNameCheck<<std::endl;
     return boNameCheck;
 }
+/******************************************************************************
+ * Function Name : login
+ * Description   : Authenticate user and determine access rights.
+ *
+ * Parameters    : None
+ * Return        : None
+ ******************************************************************************/
 void loginRightsN::loginRightsC::login()
 {
 
@@ -263,7 +372,13 @@ void loginRightsN::loginRightsC::login()
     }
 
 }
-
+/******************************************************************************
+ * Function Name : adminUser
+ * Description   : Authenticate administrator account.
+ *
+ * Parameters    : None
+ * Return        : None
+ ******************************************************************************/
 void loginRightsN::loginRightsC::adminUser()
 {
     clearScreen();
@@ -281,6 +396,13 @@ void loginRightsN::loginRightsC::adminUser()
         rightsFlag=0;
     }
 }
+/******************************************************************************
+ * Function Name : operatorUser
+ * Description   : Authenticate operator account.
+ *
+ * Parameters    : None
+ * Return        : None
+ ******************************************************************************/
 void loginRightsN::loginRightsC::operatorUser()
 {
     clearScreen();
