@@ -139,8 +139,36 @@ void vehicleDetailsN::vehicleDetailsC::setVehicleType()
             std::cout<<"Press Any Key For Re-Enter \n";
             getline(std::cin,wrongopt);
         }
+        else
+        {
+            for(char &ch : vehicleType)
+            {
+                ch = tolower(ch);
+            }
+            if(vehicleType == "four" ||  vehicleType == "4" || vehicleType[0]=='4')
+            {
+                vehicleType = "4";
+            }
+            else if(vehicleType == "two" || vehicleType == "2" || vehicleType[0]=='2')
+            {
+                vehicleType = "2";
+            }
+        }
     }
     while(retVal==false );
+}
+/******************************************************************************
+ * Function Name : getMoney
+ * Description   : Return money.
+ *
+ * Parameters    : None
+ *
+ * Return        :
+ *      Money
+ ******************************************************************************/
+unsigned int vehicleDetailsN::vehicleDetailsC:: getMoney()
+{
+    return money;
 }
 /******************************************************************************
  * Function Name : getVehicleType
@@ -174,6 +202,19 @@ std::string vehicleDetailsN::vehicleDetailsC::getOutTime()
 std::string vehicleDetailsN::vehicleDetailsC::getMobileNumber()
 {
     return mobileNumber;
+}
+/******************************************************************************
+ * Function Name : readUpdateMoney
+ * Description   : Copy current money data into another object.
+ *
+ * Parameters    :
+ *      obj -> Destination object.
+ *
+ * Return        : None
+ ******************************************************************************/
+void vehicleDetailsN::vehicleDetailsC::readUpdateMoney(unsigned int m)
+{
+    money =m;
 }
 /******************************************************************************
  * Function Name : readDataFromVehicleData

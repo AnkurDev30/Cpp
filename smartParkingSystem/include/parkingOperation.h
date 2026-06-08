@@ -20,6 +20,15 @@
 
 #define DEBUG 0
 
+//namespace ParkStatusN
+//{
+//    class ParkStatusC::public vehicleDetailsN::vehicleDetailsC
+//    {
+//        public:
+//            void readParkStarts(int ); 
+//    };
+//}
+
 /******************************************************************************
  * Namespace Name : parkingOperationN
  * Description    : Contains parking operation related classes and functions.
@@ -91,7 +100,8 @@ namespace parkingOperationN
             );
 
         public:
-
+            //friend class.
+            //friend ParkStatusN::ParkStatusC;
             /******************************************************************
              * Read complete parking data from file.
              ******************************************************************/
@@ -118,7 +128,7 @@ namespace parkingOperationN
             /******************************************************************
              * Display parking history.
              ******************************************************************/
-            void History();
+            void history();
 
             /******************************************************************
              * Save completed parking transaction.
@@ -137,6 +147,7 @@ namespace parkingOperationN
                 std::string veh,
                 int *slot
             );
+            
     };
 }
 

@@ -36,7 +36,7 @@ void parkingOperationN::parkingOperationC::fillAvailableSlot
     lastIndexDataObj.readUpdateInTime(v2[0].getInTime());
     lastIndexDataObj.readUpdateOutTime(v2[0].getOutTime());
     lastIndexDataObj.readUpdateMobileNumber(v2[0].getMobileNumber());
-    lastIndexDataObj.readUpdateVehicleType(v2[0].getMobileNumber());
+    lastIndexDataObj.readUpdateVehicleType(v2[0].getVehicleType());
 
     v1[index] = lastIndexDataObj;
 
@@ -393,6 +393,9 @@ void parkingOperationN::parkingOperationC::vehicleEnrty()
  ******************************************************************************/
 void parkingOperationN::parkingOperationC::vehicleExit()
 {
+    clearScreen();//clear the screen.
+    parkingFirmName();//display the header.
+    std::cout<<"Exit Operation\n";
     #if(DEBUG == 1)
     std::cout<<"exit option\n";
     #endif
@@ -542,10 +545,113 @@ bool parkingOperationN::parkingOperationC::checkNumberAvailableOrNot
 void parkingOperationN::parkingOperationC::parkingStatus()
 {
 
-}
-void parkingOperationN::parkingOperationC::History()
-{
+    int twoWheelerCount =0;
+    int fourWheelerCount =0;
+    clearScreen();//clear the screen.
+    parkingFirmName();//display the header.
+    std::cout<<"Parking Availabilty\n";
 
+    std::vector<vehicleDetailsN::vehicleDetailsC> parkStatusVec;
+
+    //read full data from database.
+    readFullData(parkStatusVec);
+
+    for(size_t i=0;i<parkStatusVec.size();i++)
+    {
+        if(parkStatusVec[i].getVehicleType()=="4")
+        {
+            fourWheelerCount++;
+        }
+        if(parkStatusVec[i].getVehicleType()=="2")
+        {
+            twoWheelerCount++;
+        }
+    }
+
+    std::cout<<"4 wheeler "<<MAX_4_WHEELER_SLOT-fourWheelerCount
+    <<" Slot Remaining"<<std::endl;
+
+    std::cout<<"2 wheeler "<<MAX_2_WHEELER_SLOT-twoWheelerCount
+    <<" Slot Remaining"<<std::endl;
+}
+void parkingOperationN::parkingOperationC::history()
+{
+    clearScreen();//clear the screen.
+    parkingFirmName();//display the header.
+    std::cout<<"Records \n";
+    std::string line;
+    std::vector<vehicleDetailsN::vehicleDetailsC> parkStatusVec;
+    //open file
+    std::ifstream file("data/saveDta.csv");
+    //local object
+    vehicleDetailsN::vehicleDetailsC object;
+    //local variable.
+    std::string vehicleNumber;
+    std::string vehicleOwner;
+    std::string inTime;
+    std::string outTime;
+    std::string mobileNumber;
+    std::string vehicleType;
+    
+    std::string slot;
+    unsigned int money =0;
+    std::string moneyStr ;
+    //if file is open
+
+//3,MP09WE1234,sunil,4,Sun Jun  7 19:17:10 2026,Sun Jun  7 20:20:50 2026,7700088000,50,
+//6,MP12EE0864,ravi,9753838616,Sun Jun  7 20:21:33 2026,Sun Jun  7 20:36:53 2026,9753838616,50,
+//3,MP12RR6422,sadhu,9926054321,Sun Jun  7 20:40:06 2026,Mon Jun  8 21:33:19 2026,9926054321,50,
+    if(file.is_open()==true)
+    {
+        //read line by line
+        while(getline(file,line))
+        {
+            //keep data in ss.vecPark
+            std::stringstream ss(line);
+            //diffrentiate by ,
+            getline(ss,slot,',');
+            getline(ss,vehicleNumber,',');
+            getline(ss,vehicleOwner,',');
+            getline(ss,vehicleType,',');
+            getline(ss,inTime,',');
+            getline(ss,outTime,',');
+            getline(ss,mobileNumber,',');
+            getline(ss,moneyStr,',');
+
+            std::stringstream st(moneyStr);
+            st>>money;
+
+            //update on object.
+            object.readUpdateSlotNumber(slot);
+            object.readUpdateVehicleNumber(vehicleNumber);
+            object.readUpdateVehicleOwner(vehicleOwner);
+            object.readUpdateMobileNumber(mobileNumber);
+            object.readUpdateVehicleType(vehicleType);
+            object.readUpdateInTime(inTime);
+            object.readUpdateOutTime(outTime);
+            object.readUpdateMoney(money);
+            //update in vector.
+            parkStatusVec.push_back(object);
+        }
+    }
+    else
+    {
+
+    }
+    for(size_t i=0;i<parkStatusVec.size();i++)
+    {
+        if(i==0)
+        {
+            std::cout<<std::left<<std::setw(15)<<"Vehicle Number"<<" | "
+            <<std::left<<std::setw(25)<<"In Time"<<" | "
+            <<std::left<<std::setw(25)<<"Out Time"<<" | "
+            <<std::left<<std::setw(15)<<"Money"<<" | "<<std::endl;
+        }
+        std::cout<<std::left<<std::setw(15)<<parkStatusVec[i].getVehicleNumber()<<" | "
+        <<std::left<<std::setw(25)<<parkStatusVec[i].getInTime()<<" | "
+        <<std::left<<std::setw(25)<<parkStatusVec[i].getOutTime()<<" | "
+        <<std::left<<std::setw(15)<<parkStatusVec[i].getMoney()<<" | "<<std::endl;
+    }
 }
 /******************************************************************************
  * Function Name  : moneyCalcAsPerTime
@@ -746,4 +852,5 @@ unsigned int calculationN::calculationC::moneyCalc(int hr,int min)
     }
     return money;
 }
+
 //end of file

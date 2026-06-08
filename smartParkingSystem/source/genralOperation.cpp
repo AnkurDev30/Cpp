@@ -289,6 +289,7 @@ void genralOperationN::genralOperationC::cinIgnore()
 bool genralOperationN::genralOperationC::checkVehicleType(std::string vType)
 {
     bool checkVType = false;
+    
     for(char &ch:vType)
     {
         ch = tolower(ch);
@@ -297,10 +298,12 @@ bool genralOperationN::genralOperationC::checkVehicleType(std::string vType)
     if(vType == "four" || vType == "4" || vType[0]=='4')
     {
         checkVType =true;
+      //  *vType="4";
     }
     else if(vType == "two" || vType == "2" || vType[0]=='2')
     {
         checkVType =true;
+        //*vType="2";
     }
 
     return checkVType ;

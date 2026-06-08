@@ -116,13 +116,13 @@ void menuN::menuC::menuFun()
                 break;
 
             case 3:
-                // obj.parkingStatus();
+                obj.parkingStatus();
                 break;
 
             case 4:
                 if(loginObj.rightsFlag == 1)
                 {
-                    // obj.History();
+                     obj.history();
                 }
                 break;
 

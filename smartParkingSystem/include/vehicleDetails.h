@@ -62,6 +62,8 @@ namespace vehicleDetailsN
             /* Vehicle Category (2W / 4W) */
             std::string vehicleType;
 
+            /* Money  */
+            unsigned int money ;
         public:
 
             /**************************************************************
@@ -98,7 +100,10 @@ namespace vehicleDetailsN
              * Assign parking slot number.
              **************************************************************/
             void setSlotNumber();
-
+            /**************************************************************
+             * Update money  from database.
+             **************************************************************/
+            void readUpdateMoney(unsigned int m);
             /**************************************************************
              * Update vehicle number from file/database.
              **************************************************************/
@@ -133,7 +138,10 @@ namespace vehicleDetailsN
              * Update slot number from file/database.
              **************************************************************/
             void readUpdateSlotNumber(std::string a);
-
+            /**************************************************************
+             * Return Money .
+             **************************************************************/
+            unsigned int getMoney();
             /**************************************************************
              * Return vehicle number.
              **************************************************************/
