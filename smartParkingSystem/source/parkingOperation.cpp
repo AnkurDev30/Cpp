@@ -5,6 +5,7 @@
 #include<ctime>
 #include<vector>
 #include"parkingOperation.h"
+#define MONEY_DEBUG 0
 void readSlotStatus(int *twoWheeler,int *fourWheeler)
 {
     int twoWheelerCount =0;
@@ -479,13 +480,19 @@ void parkingOperationN::parkingOperationC::vehicleExit()
         {
             if(vehicleNumber == vecPark[i].getVehicleNumber())
             { 
-
+                vecPark[i].setOutTime(); 
+                #if(MONEY_DEBUG==1)
+                    std::cout<<"out time pre = "<<vecPark[i].getOutTime()<<std::endl;
+                #endif
                 unsigned int money = calObj.moneyCalcAsPerTime
                                     (
                                         vecPark[i].getInTime(),
                                         vecPark[i].getOutTime()
                                     ); 
-                vecPark[i].setOutTime();  
+                #if(MONEY_DEBUG==1)
+                    std::cout<<"moeny = "<<money<<std::endl;
+                #endif
+                 
                 std::cout<<"Please pay : "<<money<<"/- INR"<<std::endl;                  
                 saveData(vecPark[i],money);
                 vecPark[i].readUpdateVehicleNumber("XXXXX");
@@ -756,9 +763,23 @@ unsigned int calculationN::calculationC::moneyCalcAsPerTime
     int minOutput;
     std::stringstream ssIn(inTime);
     ssIn >> dayNameIn >> monthNameIn >> dayIn >> timeIn >> yearIn;
-
-    std::stringstream ssOut(inTime);
+    #if(MONEY_DEBUG==1)
+        std::cout<<" dayNameIn "<<dayNameIn<<"\n"
+        <<" monthNameIn "<<monthNameIn<<"\n"
+        <<" dayIn "<<dayIn<<"\n"
+        <<" timeIn "<<timeIn<<"\n"
+        <<" yearIn "<<yearIn<<"\n";
+    #endif
+    std::stringstream ssOut(outTime);
     ssOut >> dayNameOut >> monthNameOut >> dayOut >> timeOut >> yearOut;
+
+    #if(MONEY_DEBUG==1)
+        std::cout<<" dayNameOut "<<dayNameOut<<"\n"
+        <<" monthNameOut "<<monthNameOut<<"\n"
+        <<" dayOut "<<dayOut<<"\n"
+        <<" timeOut "<<timeOut<<"\n"
+        <<" yearOut "<<yearOut<<"\n";
+    #endif
 
     int noOfDays  ;
     int monthCalc = monthCalcFun(yearIn,yearOut,monthNameIn,monthNameOut);
