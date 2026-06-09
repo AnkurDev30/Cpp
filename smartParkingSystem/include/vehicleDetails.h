@@ -17,6 +17,7 @@
 
 #include"genralOperation.h"
 
+#define DEBUG1 0
 /******************************************************************************
  * Namespace Name : vehicleDetailsN
  * Description    : Contains vehicle related classes and operations.
@@ -192,7 +193,9 @@ namespace vehicleDetailsN
              **************************************************************/
             void enterVehicleDetails
             (
-                vehicleDetailsN::vehicleDetailsC &obj
+                vehicleDetailsN::vehicleDetailsC &obj,
+                bool *p,
+                bool *q
             );
 
             /**************************************************************

@@ -22,8 +22,8 @@
  ******************************************************************************/
 #define PARKING_NAME "RAMA PARKING"
 
-#define MAX_2_WHEELER 200
-#define MAX_4_WHEELER 100
+#define MAX_2_WHEELER 3
+#define MAX_4_WHEELER 3
 
 /******************************************************************************
  * Login Credentials

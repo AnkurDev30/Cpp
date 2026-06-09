@@ -5,6 +5,43 @@
 #include<ctime>
 #include<vector>
 #include"parkingOperation.h"
+void readSlotStatus(int *twoWheeler,int *fourWheeler)
+{
+    int twoWheelerCount =0;
+    int fourWheelerCount =0;
+    //clearScreen();//clear the screen.
+    //parkingFirmName();//display the header.
+    //std::cout<<"Parking Availabilty\n";
+    parkingOperationN::parkingOperationC obj;
+    std::vector<vehicleDetailsN::vehicleDetailsC> parkStatusVec;
+
+    //read full data from database.
+    obj.readFullData(parkStatusVec);
+
+    for(size_t i=0;i<parkStatusVec.size();i++)
+    {
+        if(parkStatusVec[i].getVehicleType()=="4")
+        {
+            fourWheelerCount++;
+        }
+        if(parkStatusVec[i].getVehicleType()=="2")
+        {
+            twoWheelerCount++;
+        }
+    }
+    #if(DEBUG ==1)
+    std::cout<<twoWheelerCount<<" "<<fourWheelerCount<<std::endl;
+    std::string ABC;
+    getline(std::cin,ABC);
+    #endif
+    *twoWheeler=twoWheelerCount;
+    *fourWheeler=fourWheelerCount;
+    //std::cout<<"4 wheeler "<<MAX_4_WHEELER_SLOT-fourWheelerCount
+    //<<" Slot Remaining"<<std::endl;
+//
+    //std::cout<<"2 wheeler "<<MAX_2_WHEELER_SLOT-twoWheelerCount
+    //<<" Slot Remaining"<<std::endl;  
+}
 /******************************************************************************
  * Function Name  : fillAvailableSlot
  * Description    : Update an available parking slot with new vehicle data.
@@ -349,8 +386,6 @@ bool parkingOperationN::parkingOperationC::writeDataFull
             <<inTime<<","
             <<outTime<<std::endl;
         }
-    
-
     }
     else
     {
@@ -372,15 +407,37 @@ void parkingOperationN::parkingOperationC::vehicleEnrty()
     std::vector<vehicleDetailsN::vehicleDetailsC> vecPark;
 
     vehicleDetailsN::vehicleDetailsC objectVeh;
-
+    bool two=false;
+    bool four=false;
 
     clearScreen();//clear the screen.
     parkingFirmName();//display the header.
+
     //take vehicle data.
-    enterVehicleDetails(objectVeh);
-    
-    vecPark.push_back(objectVeh);
-    (void)writeDataEntry(vecPark);
+    enterVehicleDetails(objectVeh,&two,&four);
+    std::cout<<"two ="<<two<<std::endl;
+    std::cout<<"four ="<<four<<std::endl;
+    std::cout<<"p "<<objectVeh.getVehicleType()<<std::endl;
+    if(two == true && objectVeh.getVehicleType() == "2")
+    {
+        clearScreen();//clear the screen.
+        parkingFirmName();//display the header.
+
+        std::cout<<"No Space Available for 2 Wheeler\n";
+    }
+    else if(four == true && objectVeh.getVehicleType() == "4")
+    {
+        clearScreen();//clear the screen.
+        parkingFirmName();//display the header.
+
+        std::cout<<"No Space Available for 4 Wheeler\n";
+    }
+    else
+    {
+       // std::cout<<"Hi"<<std::endl;
+        vecPark.push_back(objectVeh);
+        (void)writeDataEntry(vecPark);
+    }
 
 }
 /******************************************************************************
@@ -544,7 +601,6 @@ bool parkingOperationN::parkingOperationC::checkNumberAvailableOrNot
 }
 void parkingOperationN::parkingOperationC::parkingStatus()
 {
-
     int twoWheelerCount =0;
     int fourWheelerCount =0;
     clearScreen();//clear the screen.
@@ -597,10 +653,6 @@ void parkingOperationN::parkingOperationC::history()
     unsigned int money =0;
     std::string moneyStr ;
     //if file is open
-
-//3,MP09WE1234,sunil,4,Sun Jun  7 19:17:10 2026,Sun Jun  7 20:20:50 2026,7700088000,50,
-//6,MP12EE0864,ravi,9753838616,Sun Jun  7 20:21:33 2026,Sun Jun  7 20:36:53 2026,9753838616,50,
-//3,MP12RR6422,sadhu,9926054321,Sun Jun  7 20:40:06 2026,Mon Jun  8 21:33:19 2026,9926054321,50,
     if(file.is_open()==true)
     {
         //read line by line
@@ -642,16 +694,30 @@ void parkingOperationN::parkingOperationC::history()
     {
         if(i==0)
         {
+            for(int i=0;i<90;i++)
+            std::cout<<"-";
+
+            std::cout<<std::endl;
+
             std::cout<<std::left<<std::setw(15)<<"Vehicle Number"<<" | "
             <<std::left<<std::setw(25)<<"In Time"<<" | "
             <<std::left<<std::setw(25)<<"Out Time"<<" | "
             <<std::left<<std::setw(15)<<"Money"<<" | "<<std::endl;
+
+            for(int i=0;i<90;i++)
+            std::cout<<"-";
+
+            std::cout<<std::endl;
         }
         std::cout<<std::left<<std::setw(15)<<parkStatusVec[i].getVehicleNumber()<<" | "
         <<std::left<<std::setw(25)<<parkStatusVec[i].getInTime()<<" | "
         <<std::left<<std::setw(25)<<parkStatusVec[i].getOutTime()<<" | "
         <<std::left<<std::setw(15)<<parkStatusVec[i].getMoney()<<" | "<<std::endl;
     }
+    for(int i=0;i<90;i++)
+    std::cout<<"-";
+
+    std::cout<<std::endl;
 }
 /******************************************************************************
  * Function Name  : moneyCalcAsPerTime

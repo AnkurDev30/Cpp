@@ -10,6 +10,8 @@
 #include<vector>
 #include<fstream>
 #include<sstream>
+//!< global variable.
+extern void readSlotStatus(int *twoWheeler,int *fourWheeler);
 /******************************************************************************
  * Function Name : readUpdateVehicleNumber
  * Description   : Update vehicle registration number.
@@ -94,21 +96,42 @@ void vehicleDetailsN::vehicleDetailsC::readUpdateSlotNumber(std::string st)
  ******************************************************************************/
 void vehicleDetailsN::vehicleDetailsC::enterVehicleDetails
 (
-    vehicleDetailsN::vehicleDetailsC &obj
+    vehicleDetailsN::vehicleDetailsC &obj,
+    bool *twoW,
+    bool *fourW
 )
 {
     //!< clear screen.
     clearScreen();
     parkingFirmName();//!< parking company name.
+    int twoWheeler;
+    int fourWheeler;
+
+    readSlotStatus(&twoWheeler,&fourWheeler);
 
     //!< set vehicle details. 
-      obj.setVehicleType();
+    obj.setVehicleType();
+
+    if(fourWheeler > (MAX_4_WHEELER-1) && obj.getVehicleType()=="4")
+    {
+      *fourW = true;
+       std::cout<<"No Space for 4 Wheeler\n";
+    }
+    else if(twoWheeler > (MAX_2_WHEELER-1) && obj.getVehicleType()=="2")
+    {
+      std::cout<<"No Space for 2 Wheeler\n";
+      *twoW = true;
+    }
+    else
+    {
       obj.setVehicleNumber();
       obj.setVehicleOwner();
       obj.setInTime();
       obj.readUpdateOutTime("------");
       obj.setMobileNumber();   
       obj.setSlotNumber();
+    }
+    std::cout<<"*twoW = "<<*twoW<<std::endl;
 }
 /******************************************************************************
  * Function Name : setVehicleType
@@ -130,7 +153,7 @@ void vehicleDetailsN::vehicleDetailsC::setVehicleType()
 
         std::cout<<"Vehicle Type \n";
         getline(std::cin,vehicleType);
-
+        
         retVal = checkVehicleType(vehicleType);
 
         if(retVal==false)
@@ -151,9 +174,10 @@ void vehicleDetailsN::vehicleDetailsC::setVehicleType()
             }
             else if(vehicleType == "two" || vehicleType == "2" || vehicleType[0]=='2')
             {
+
                 vehicleType = "2";
             }
-        }
+        }   
     }
     while(retVal==false );
 }
