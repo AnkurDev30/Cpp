@@ -1,0 +1,19 @@
+stl study data.
+Q1.what is STl?
+Ans. stl is nothing but its standerd template liberary which readymade predefine functions and algorithms.
+Examples:
+
+A.  vector
+B.  string
+C.  map
+D.  pair
+E.  queue
+F.  stack
+G.  set
+
+Benefits:
+
+-->  No manual memory management
+-->  Reusable
+-->  Fast development
+-->  Industry standard
