@@ -17,3 +17,62 @@ Benefits:
 -->  Reusable
 -->  Fast development
 -->  Industry standard
+
+Q2.  what is vector?
+ANs: In C++, a vector (std::vector) is a dynamic array that can automatically grow or shrink in size when elements are added or removed.
+
+in Array we have below problems :
+  fixed size 
+  can overfllow and memory waste. 
+-->  but that issue not with vector
+
+Benifits: Dynamic size
+Automatic memory management
+Easy insertion/deletion
+
+Q3 what are the importanint functions of vector.
+.push_back()--> add element
+.pop_back()--> remove variable.
+.size()--> number of element
+.erase()--> erase element
+.at()--> add at position 
+
+
+interview questions-->
+Q1. what is STL?
+STL is nothing but its standers template liberary , which have some predefine functions and algorithm 
+we can can easily handle in our Cpp project.
+
+Q2. what is Diffrence b/w array and vector?
+  array: fix size
+  vector: no fixed size
+
+  array: manual management/ static
+  vector: automatic management/ dyanmaic allocated
+
+  array : overfllow issue
+  vector : no overflow issue
+
+Q3: what is use of capacity () function?
+ANs : give the size of allocated memory of vector.
+
+size() function give number of elements , capacity() function give memory size of vector.
+
+Q4 why use vector?
+its dynalically managment array, insertion and remove the element is very easy.
+
+Q5 What happens when vector becomes full?
+Vector allocates larger memory and copies elements.
+
+
+
+
+
+
+
+
+
+
+
+
+
