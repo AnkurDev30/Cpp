@@ -69,7 +69,50 @@ Q5 What happens when vector becomes full?
 Vector allocates larger memory and copies elements.
 
 
+**************************** Strings*****************************************************************
 
+what is string in cpp?
+string is class provide by standerd liberary 
+we can store character data dyanamically and manupulate it.
+
+Benefits:
+1- Dynamic size
+2- Easy operations
+3- No buffer overflow issues
+
+
+5. find()
+Search string.
+
+std::string str = "VehicleNumber";
+
+if(str.find("Number") != std::string::npos)
+{
+    std::cout<<"Found";
+}
+
+what is npos : if string not found, its return type of find() function.
+"String not found" npos.
+//////////////////////////////////
+6. substr()
+Extract part of string.
+
+std::string str = "MH12AB1234";
+
+std::string city = str.substr(0,4);(start place, number of character)
+///////////////////////////////////
+
+7. replace()
+std::string str = "Hello";
+
+str.replace(0,5,"Hi");(start place, number of character, replace string)
+//////////////////////
+
+what are diffrence b/w chatracter array and string ?
+character array:- fixed size, static memory, difficult handling.
+string : dynamic management, easy operation, no fixed size'
+
+******************************************************************************************
 
 
 
