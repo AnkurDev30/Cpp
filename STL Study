@@ -129,7 +129,7 @@ std::map<key_value_type, data_value_type> map_variable_name;
 std::map<int,std::string> emp;
 
 
-
+* Map stored data in shorted order by key.
 
 🎯 Example 1: Employee Database
 #include<iostream>
