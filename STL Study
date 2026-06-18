@@ -112,12 +112,49 @@ what are diffrence b/w chatracter array and string ?
 character array:- fixed size, static memory, difficult handling.
 string : dynamic management, easy operation, no fixed size'
 
-******************************************************************************************
+************************************  Map  *****************************************************
+: map is part of STL, which can store the key value pair 
+key is nothing but its uniqe indeitifer.
+and value means data
+
+example :
+Roll Number -> Student Name
+Employee ID -> Employee Name
+Vehicle Number -> Owner Name
+Word -> Meaning
+
+syntax of map:
+
+std::map<key_value_type, data_value_type> map_variable_name;
+std::map<int,std::string> emp;
 
 
 
 
+🎯 Example 1: Employee Database
+#include<iostream>
+#include<map>
 
+int main()
+{
+    std::map<int,std::string> emp;
+
+    emp[1001] = "Ankur";
+    emp[1002] = "Ram";
+    emp[1003] = "Shyam";
+
+    std::cout << emp[1002];
+
+    return 0;
+}
+
+Output:
+
+Ram
+
+
+it->first point to key
+it->second point to data
 
 
 
