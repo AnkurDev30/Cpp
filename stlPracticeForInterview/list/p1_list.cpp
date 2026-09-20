@@ -1,31 +1,32 @@
-//list
+
+/*
+1. Create and print a list
+
+Create std::list<int>
+Insert 10 numbers
+Print using iterator
+*/
 #include<iostream>
 #include<list>
-class list1
-{
-    public:
-        std::list<int> l1;
-        void readList()
-        {
-            int a;
-            for(int i=0;i<5;i++)
-            {
-                std::cout<<"enter data\n";
-                std::cin>>a;
-                l1.push_back(a);
-            }
-        }
-        void printData()
-        {
-            for(auto &l:l1)
-            {
-                std::cout<<l<<std::endl;
-            }
-        }
-};
+#include<algorithm>
+
 int main()
 {
-    list1 l2;
-    l2.readList();
-    l2.printData();
+    std::list<int> l;
+
+    for(int i=0;i<10;i++)
+    {
+        if(i%2==0)
+        {
+            l.push_back(i); //9753102468
+        }
+        else l.push_front(i);
+    }
+
+    std::cout<<"print list data\n";
+    for(auto m:l)
+    {
+        std::cout<<m<<" ";
+    }
+    std::cout<<std::endl;
 }
