@@ -92,3 +92,75 @@ private member can access only with in class.
 for private members no need to take object inside of class
 
 
+onject : object is instance of class, logical unit 
+            when we define class memory allocated
+
+
+
+
+control statement :- they can able to contro program
+
+                            control statement
+                                    |
+                           --------------------
+                           |                   |
+                        conditional          unconditional
+                           |                        |
+                     |---------------|              |  return;
+               ittreative       no-itterative       |  goto
+                for                 if              |  continue
+                while               elese if        |  exit
+                do while            switch
+
+
+
+1.(7)  data hiding
+hide the data(data members + member funtions ) from end user.
+it will achive by access specifier (private , public );
+
+class functions or variable we cna define in 2 ways ; inside of class and outside of class
+
+
+if function is inside of class so compiler treated its inline funtion
+and if funtion is big so it will not useful
+
+function prototype:
+funtion calling 
+function defination
+
+void sk(int a);//function prototype
+inline void funq();
+int main()
+{
+    //
+    //
+    sk(5);//function calling
+    //
+    //
+    std::cout<<hello;//funq();//step 3
+    std::cout<<hello;//funq();//step 3
+    std::cout<<hello;//funq();//step 3
+}
+inline void funq()
+{
+    std::cout<<hello;
+}
+
+void sk(int a)//function defination
+{
+    std::cout<<a;
+}
+
+class Ab
+{
+    public:
+        void fun()  //inside of class, 
+        {
+            std::cout<<"hello"<<std::endl;
+        }
+        void fun2();
+};
+void Ab::fun2():- outside of class
+{
+    std::cout<<"hi"<<std::endl;
+}
