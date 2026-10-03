@@ -164,3 +164,19 @@ void Ab::fun2():- outside of class
 {
     std::cout<<"hi"<<std::endl;
 }
+
+
+/*
+iostream:-istream and ostream
+
+istream: cin>>
+
+ostream : cout<<
+
+stream : flow of charcter
+
+*/
+
+encapsulation : encapsultion is one piller of oop
+encapsulation is nothing binding the data member and 
+member functions in a single unit. 
