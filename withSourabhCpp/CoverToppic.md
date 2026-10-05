@@ -213,5 +213,68 @@ name should be same as class start with tild symbole '~'
 
 release memory, resource
 
+construtor vs fun
+
+1. when we create object constructor call automatically.
+2. construtor call one  time only when object create.
+3. construtor is a special funtion , its have no return type
+4. construtor name should be same as class 
+
+1. when we call funtion that time it will call no automatically calling.
+2. funtion can call multiple times
+3. funtion have return type
+4. funtion can have any name, as per identifier name.
 
 
+construtor vs deconstrutor 
+
+1. when object create construtor call
+2. name same a class.
+3. can pass arguments
+4. its have 3 types :- default parameterzied and copy
+
+1. when object destroy de-constructor call
+2. name same as class with tild~
+3. not pass arguments
+4. no types
+
+
+/-------------------
+
+auto : it can automatically determin data type
+
+auto a= 10;//its integer
+auto b=10.5// float
+auto name="sk"//string
+
+int x=10;
+auto a=10;
+
+if(a==x)
+{
+    std::cout<<true;
+}
+
+* must be initilize 
+auto x;
+
+std::cout<<x;//compiler error
+
+auto x=40;
+std::cout<<x;//compiler no error
+
+iterators --> stl
+range base loop--> done p18.pp
+
+
+//refrence 
+//refrence is nothing but its constant pointer
+// it will provide alias name of variable.
+// it will not create copy variable
+// initaization and decalartion should be same time
+// again initilization not posiible
+// datatype_name& variable_name = initilize with other variable.
+
+5 oct 2026
+auto, bool, string, range base loop, refrence
+2       2    5      3                   5
