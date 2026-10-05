@@ -17,7 +17,7 @@ class swap
             std::cout<<"new values swap by pointer : a = "<<a<<" b = "<<b<<std::endl;
             std::cout<<"swap by refrence\n";
             swapByRefrence(a,b);
-            std::cout<<"new values swap by pointer : a = "<<a<<" b = "<<b<<std::endl;
+            std::cout<<"new values swap by refrence : a = "<<a<<" b = "<<b<<std::endl;
 
         }
         void swapByPointer(int *p,int *q)

@@ -40,7 +40,7 @@ class MilkDecorator
 
 int main()
 {
-    
+    coffee c1;
     
     Strongcoffee s1;
     Normalcoffee n1;

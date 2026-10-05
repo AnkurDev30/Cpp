@@ -180,3 +180,38 @@ stream : flow of charcter
 encapsulation : encapsultion is one piller of oop
 encapsulation is nothing binding the data member and 
 member functions in a single unit. 
+
+composition: when we make a object from other class and use that properties 
+its call composition.
+in composition size of object will increase,  
+it will take memory also from other class.
+
+this pointer :- 
+1. this pointer belongs to object.
+2. each object have one hidden pointer its call this pointer 
+3. this keyword use for it 
+4. it will provide the current object address 
+5. its very useful for global and local variable
+6. its very useful for method/function chain mechanishm 
+
+constructor: 
+construtor is nothing but a special function
+which is call when we create object.
+constructor name should be same as class name
+no return type 
+constructor call only once when object create 
+constructor 3 type: default, parmeter , copy
+#copy construtor :- use cases :rule of 3, rule of 5, deep copy shallow copy
+
+use case : initialization of data
+read value
+
+
+desconstrutor : deconstructor call when object destroy
+no prameter no return type
+name should be same as class start with tild symbole '~'
+
+release memory, resource
+
+
+
