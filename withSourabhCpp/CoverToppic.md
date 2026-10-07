@@ -278,3 +278,50 @@ range base loop--> done p18.pp
 5 oct 2026
 auto, bool, string, range base loop, refrence
 2       2    5      3                   5
+
+
+/*************************** 06 oct **************************/
+
+refrence vs pointer
+
+refrence:-
+    1.  refrence is a constant pointer.
+    2.  initialization and decalration at same time
+    3.  refrence is seure 
+
+pointer:
+    1.  pointer is not always constant , but it can be.
+    2.  initialization and decalration at same time not nessasry
+    3.  pointer not secure
+
+please make at least 10 pgm.
+
+initilization techniq in Cpp
+
+int a=10;
+int b(10);
+int c{10};
+
+a==b==c
+
+inheritence: inheritence is a very important feture of oop
+it is relationship
+a class have ability to derive properties and fetures and charcterstics from other class 
+and create new class 
+
+its very useful for resuseability
+
+:- single inheritence, multiple , multileval, hybrid,
+
+inheritance : 
+1. it is a relationship
+2. no need to create object
+
+composition 
+1. it has a relationship
+2. need to create object
+
+// inhertance single 5 multiple 5
+// one program : class object encapsulation show auto refrence inheritance
+
+/*****************************************************************************************
