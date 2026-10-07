@@ -325,3 +325,54 @@ composition
 // one program : class object encapsulation show auto refrence inheritance
 
 /*****************************************************************************************
+07 oct 2026
+pending in inheritance : public private protected , diamaond problem
+
+
+/*
+inheritance
+
+construtor 
+base class construtor
+derived class construtor
+
+deconstrutor
+derived deconstrutor
+base deconstrutor
+
+*/
+
+dma:- dyanmaic memory allocation
+
+malloc and calloc : runtime memory allocation
+are functions in  c
+
+c++ :- 
+new and delete :- operators 
+
+syntax 
+
+datatype _pointer = new datatype();-->|    0  |
+or
+datatype _pointer = new datatype(value);---> |   value|
+
+delete syntax :
+  
+delete pointer name 
+
+
+malloc/calloc and new
+
+new: - new is a operator
+no spefic header required 
+new is fast 
+
+malloc/c: is a funtion
+cstdlib required
+slow 
+
+public private or protected in inheritance.
+new and delete 3 array 3
+with funtion 3 
+//////////////////////////////////////////////////////////////
+
