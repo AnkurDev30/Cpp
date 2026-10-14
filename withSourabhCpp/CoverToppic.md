@@ -376,3 +376,60 @@ new and delete 3 array 3
 with funtion 3 
 //////////////////////////////////////////////////////////////
 
+13 10 26
+
+Base 
+{
+
+}
+child : public/private/protected 
+{
+
+}
+1. public :
+B
+{
+//data
+};
+c:public B
+{
+//b data(public and protected)
+}
+D:public c or B
+{
+    //b and c : if u use c 
+    //b data : if u use B
+}
+private member can access with in class not access derived calss or main.
+
+public: anywhere 
+
+protected : only in inherited class
+///////////////////////////////////////////////////////////////////
+cpp:- programing easy array a[10];
+a.stable_partion(int x %2==0);
+print array 35792468
+
+vector and list and map
+
+c++:
+
+class 
+object :-
+encapsulation done
+data hiding  done
+DMA : done
+inheritence 
+polyorphishm :-compile time (funtion overloading, operator )runtime virtual fun and pure 
+static member static funtion
+
+application c++
+    os(layer)  capi
+    elad
+
+
+
+
+
+
+
