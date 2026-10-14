@@ -405,6 +405,31 @@ private member can access with in class not access derived calss or main.
 public: anywhere 
 
 protected : only in inherited class
+//////////////////////////////////////////////////////////////////////
+
+14 oct 2026
+
+polymorphism:- compile time and runtime
+                1. function overloadimng and operator overloading
+                2. virtual funtion
+
+funtion overloading :- define a same name functions , but aruguments nd return type should diffrent 
+10 - 10 default argument 
+
+funtion overloading 10
+default argument 10
+static mebers 10
+static funtion 5
+
+//////////////////////////////////////////////////////////////////////
+
+15 :- oct 2026
+operator overloading 
+copy construtor
+
+16: 
+deep copy and shallow copy 
+
 ///////////////////////////////////////////////////////////////////
 cpp:- programing easy array a[10];
 a.stable_partion(int x %2==0);
