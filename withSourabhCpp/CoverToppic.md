@@ -424,9 +424,37 @@ static funtion 5
 //////////////////////////////////////////////////////////////////////
 
 15 :- oct 2026
-operator overloading 
-copy construtor
+operator overloading : we perform operation with user define data types
 
+int x,y,z;
+
+z=x+y;
+
+struct A 
+{
+    int a,b;
+};
+struct B 
+{
+    int a,b;
+};
+
+A A1;
+B b1;
+
+A1.a+b1.a;
+A1.b+b1.b;
+
+with operator overloading :  A1+b1;//possible
+
+operator overloading is nothing its techniqe to create a funtions for perform the opertions on userdefine data types.
+they cant change basic operations of operator.
+
+not possible operator overloading with .
+?; , sizeof(), . .*  
+
+copy construtor
+///////////////////////////////////////////////////////////////////////
 16: 
 deep copy and shallow copy 
 
