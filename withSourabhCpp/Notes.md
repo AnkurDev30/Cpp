@@ -36,6 +36,7 @@ C++ promotes reuse of existing code using inheritance, containership and templat
 - endl is used send '\n' to the screen
 
 - >> is an extraction operator
+- << is an insertion operator
 
 - <<,>> can be cascaded
 

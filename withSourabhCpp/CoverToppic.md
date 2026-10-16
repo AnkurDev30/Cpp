@@ -451,13 +451,45 @@ operator overloading is nothing its techniqe to create a funtions for perform th
 they cant change basic operations of operator.
 
 not possible operator overloading with .
-?; , sizeof(), . .*  
+?; , sizeof(), . .* 
 
-copy construtor
++,-,*, /
+
 ///////////////////////////////////////////////////////////////////////
-16: 
-deep copy and shallow copy 
+16 oct 2026
 
+copy construtor :  create a object with copy data from source object to new object;
+Take care if DMA data members
+
+diffrence b/w shallow copy and deep copy.
+
+shallow copy :- both object data point to same memory
+if one object data change so other also change becuase both point to same memory.
+its fast becuse no new memory allocation
+
+
+deep copy :- both object data point to diffrent  memory.
+if one object data change so other not change becuase both point to diffrent memory.
+its slow because new mwmeory aloocation
+
+improtanint in "rule of 3":
+
+if we define any one of them :
+copy constructor
+destructor
+copy assigment operator 
+
+
+so we should define all of them.
+for safety of sw, prevent to crash
+
+deep copy and shallow copy :
+copy assigment operator  : 
+
+copy constructor 5
+deep copy 5
+shallow 5
+opertor overloading 4 + 1 copy assigment operator
 ///////////////////////////////////////////////////////////////////
 cpp:- programing easy array a[10];
 a.stable_partion(int x %2==0);
