@@ -491,6 +491,13 @@ deep copy 5
 shallow 5
 opertor overloading 4 + 1 copy assigment operator
 ///////////////////////////////////////////////////////////////////
+17 oct 2026
+
+polymorphishm :- funtion overloading done , opertor overloading done
+virtual funtions
+
+
+///////////////////////////////////////////////////////////////////
 cpp:- programing easy array a[10];
 a.stable_partion(int x %2==0);
 print array 35792468
