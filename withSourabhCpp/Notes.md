@@ -61,7 +61,7 @@ int k {30};
 
 - decltype keyword can be used to infer the type of a variable without assigning a value to it (will discuss in future)
 
-- While defining structure, union or enum variable there is no need to use the keywords struct, union or enum
+- While defining structure, union displayor enum variable there is no need to use the keywords struct, union or enum
 
 - Anonymous unions and enums permit direct access to their elements without being required to create union or enum variables
 

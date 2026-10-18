@@ -495,6 +495,19 @@ opertor overloading 4 + 1 copy assigment operator
 
 polymorphishm :- funtion overloading done , opertor overloading done
 virtual funtions
+//////////////////////////////////////////////////////////////////
+
+18 oct 2026
+
+->  pre increment operator overload
+->  post 
+->  stack
+
+-> runtime polymorphishm
+-> virtual fun
+-> pure virtual fun
+-> abstrct class
+-> virtual class
 
 
 ///////////////////////////////////////////////////////////////////

@@ -32,7 +32,7 @@ int main()
 #include <iostream>
 using namespace std;
 int i = 20;
-int main()
+int main()display
 {
     int i = 5;
     cout << i << endl << ::i << endl;
