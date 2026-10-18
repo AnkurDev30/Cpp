@@ -4,7 +4,7 @@ class Ball
     public:
         int a{8};
 };
-class Rubber : private Ball
+class Rubber : private Ball   
 {
     public:
         int b=a;
@@ -13,10 +13,10 @@ class Rubber : private Ball
             std::cout<<b<<std::endl;
         }
 };
-class rohan : public Rubber
+class rohan : private ball
 {
     public:
-        int c=a;
+      //  int c=a;
         int d =b;
         void dev ()
         {
