@@ -505,12 +505,56 @@ virtual funtions
 
 -> runtime polymorphishm
 -> virtual fun
+-> virtual class 
+///////////////////////////////////////////////////////
+24-10-2026
+
 -> pure virtual fun
 -> abstrct class
--> virtual class
-
-
+-> pure vs virtual
+-> namespace
+/////////////////////////////////////////////////////////
+25-10-2026
+-> friend class and friend funtion.
+-> difference between struct and class?
+-> c and c++
 ///////////////////////////////////////////////////////////////////
+abstraction A
+deconstructor overloading A
+inline function B
+friend class and friend function B
+compile time polymorphism and Runtime polymorphism C
+difference between struct and class? C
+virtual function from a constructor? D
+What are templates in C++? Explain function templates vs class templates. D
+What is RAII in C++? Why is it considered a best practice? E
+What are lambda expressions in C++? Explain capture clauses.F
+What are move semantics and rvalue references in C++11? Why are they important? G
+What are smart pointers in C++? Explain unique_ptr, shared_ptr, and weak_ptr. H
+
+STL :- 
+vector,  1-2
+array 2
+string 3
+list 4
+map 5
+set 6
+stack 7 
+queue 8
+deque, 9
+unorderd map 10
+multiset 11
+multimap 12
+
+
+thred /RTOS 13
+
+SOLID 14/ 15
+Design pattern 3 days
+
+
+c/ C++, data struture with Cpp, SOLID, design pattern multithread 
+/////////////////////////////////////////////////////
 cpp:- programing easy array a[10];
 a.stable_partion(int x %2==0);
 print array 35792468
