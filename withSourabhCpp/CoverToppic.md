@@ -518,8 +518,26 @@ virtual funtions
 -> friend class and friend funtion.
 -> difference between struct and class?
 -> c and c++
+
+//Hw:
+5 programs starture 2 static member fun
+5 programs friend funcion
+5 programs friend CLass
+
+//////////////////////////////////////////////////////////////////
+26 oct 2026
+- more in virtual funtions
+- object slicing 
+- virtual fun if private
+- virtual fun under constructor
+- virtual constructor
+- virtual destructor
+- dyanamic_cast
+
+abstractions
+
 ///////////////////////////////////////////////////////////////////
-abstraction A
+1. abstraction A
 deconstructor overloading A
 inline function B
 friend class and friend function B
