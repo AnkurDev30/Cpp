@@ -526,24 +526,30 @@ virtual funtions
 
 //////////////////////////////////////////////////////////////////
 26 oct 2026
-- more in virtual funtions
-- object slicing 
-- virtual fun if private
+ more in virtual funtions
+- object slicing -done
+- virtual fun if private-done
 - virtual fun under constructor
 - virtual constructor
 - virtual destructor
 - dyanamic_cast
 
-abstractions
+- 3  programs class object , encapsulation ,data hiding ,inheritance , friend fun friend class polymprphishm(f0, o0,virtualfun, pure virtual fun, 2 override 2 final)
 
+abstractions
+template
+excepation handling c++ 98 99 complete
+c++11
+////////////////////////////////////////////////////////////////////
+
+30oct 2026
+
+template 
+exception handling
 ///////////////////////////////////////////////////////////////////
 1. abstraction A
 deconstructor overloading A
 inline function B
-friend class and friend function B
-compile time polymorphism and Runtime polymorphism C
-difference between struct and class? C
-virtual function from a constructor? D
 What are templates in C++? Explain function templates vs class templates. D
 What is RAII in C++? Why is it considered a best practice? E
 What are lambda expressions in C++? Explain capture clauses.F
