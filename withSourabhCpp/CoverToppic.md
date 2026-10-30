@@ -544,7 +544,7 @@ c++11
 
 30oct 2026
 
-template 
+template :-
 exception handling
 ///////////////////////////////////////////////////////////////////
 1. abstraction A
