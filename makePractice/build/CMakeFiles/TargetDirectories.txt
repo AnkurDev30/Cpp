@@ -1,0 +1,3 @@
+/home/ankur/cpp/makePractice/build/CMakeFiles/out.dir
+/home/ankur/cpp/makePractice/build/CMakeFiles/edit_cache.dir
+/home/ankur/cpp/makePractice/build/CMakeFiles/rebuild_cache.dir

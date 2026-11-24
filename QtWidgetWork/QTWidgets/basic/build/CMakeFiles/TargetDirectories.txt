@@ -1,0 +1,3 @@
+/home/ankur/cpp/QTWidgets/build/CMakeFiles/out.dir
+/home/ankur/cpp/QTWidgets/build/CMakeFiles/edit_cache.dir
+/home/ankur/cpp/QTWidgets/build/CMakeFiles/rebuild_cache.dir

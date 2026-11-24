@@ -1,0 +1,3 @@
+/home/ankur/cpp/ninjaPractice/build/CMakeFiles/out.dir
+/home/ankur/cpp/ninjaPractice/build/CMakeFiles/edit_cache.dir
+/home/ankur/cpp/ninjaPractice/build/CMakeFiles/rebuild_cache.dir
