@@ -42,6 +42,5 @@ int main()
 
     p->fun();
 
-    delete p;
-    p=nullptr;
+    delete
 }
