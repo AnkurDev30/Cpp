@@ -18,3 +18,25 @@ predefine liberay
 ->multiset 1
 
 
+lamba : lamba is useful for algorithms.
+
+lambda is nothing but its a funtion which we use without funtion name
+
+void fun()
+{
+    std::cout<<"hello";
+}
+normal funtion can no define inside main
+lambda introduce in c++ 11
+useful in STL algorithm
+
+
+int main()
+{
+    []()
+    {
+        std::cout<<"hello";
+    };
+}
+
+
